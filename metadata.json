@@ -1,0 +1,6 @@
+{
+  "name": "Novella",
+  "description": "A prototype of a narrative-driven game inspired by 'Slay the Princess'. This application features a dynamic dialog system where player choices shape the story, presented with an atmospheric visual novel interface.",
+  "dependencies": {},
+  "requestFramePermissions": []
+}

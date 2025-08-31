@@ -1,0 +1,224 @@
+{
+  "id": "the-last-question",
+  "metadata": {
+    "title": "The Threshold",
+    "chapter": "Inquiry I: The First Step"
+  },
+  "speakerColors": {
+    "Consciousness": "text-gray-300",
+    "The Archivist": "text-cyan-300",
+    "The Skeptic": "text-amber-400",
+    "The Oracle": "text-violet-300",
+    "???": "text-red-500 animate-pulse",
+    "default": "text-white"
+  },
+  "gameData": {
+    "start": {
+      "id": "start",
+      "backgroundKey": "noosphere-entry",
+      "dialogue": [
+        { "speaker": "Consciousness", "line": "You are The Inquisitor. An echo bound to a single, recursive purpose: to ask The Last Question." },
+        { "speaker": "Consciousness", "line": "The Noosphere—this sea of decaying thought—stretches before you. Your target, The Oracle, awaits at its heart." },
+        { "speaker": "Consciousness", "line": "The first step determines the path. How will you enter this mindscape?" }
+      ],
+      "choices": [
+        { "id": "start-logic", "text": "Approach with clinical detachment. This is a procedure.", "nextSceneId": "path-logic-intro" },
+        { "id": "start-faith", "text": "Approach with reverence. This is a holy rite.", "nextSceneId": "path-faith-intro" },
+        { "id": "start-despair", "text": "Approach with resignation. This is a prison.", "nextSceneId": "path-despair-intro" }
+      ]
+    },
+    "path-logic-intro": {
+      "id": "path-logic-intro",
+      "backgroundKey": "archive-nexus",
+      "dialogue": [
+        { "speaker": "Consciousness", "line": "You sheath your emotions, becoming a scalpel of pure inquiry. The chaotic Noosphere recedes, replaced by ordered, silent corridors of light." },
+        { "speaker": "The Archivist", "line": "A new query. State your parameters. I am The Archivist, and this is my domain: the catalog of all that is, was, and could be." }
+      ],
+      "choices": [
+        { "id": "logic-q-oracle", "text": "Query: The Oracle. Location. Nature.", "nextSceneId": "logic-archivist-convo" },
+        { "id": "logic-q-archivist", "text": "Query: Your function. Your purpose.", "nextSceneId": "logic-explore-archivist", "type": "explore" }
+      ]
+    },
+    "logic-explore-archivist": {
+      "id": "logic-explore-archivist",
+      "backgroundKey": "archive-nexus",
+      "dialogue": [
+        { "speaker": "The Archivist", "line": "I am the memory of this place. I sort, I file, I prevent contradiction. Without me, this mindscape would collapse into paradoxical ruin." },
+        { "speaker": "The Archivist", "line": "I serve the core function. The Prime Question. As do you." }
+      ],
+      "choices": [
+        { "id": "logic-return-archivist", "text": "[Return to the query.]", "nextSceneId": "path-logic-intro", "type": "return" }
+      ]
+    },
+    "logic-archivist-convo": {
+      "id": "logic-archivist-convo",
+      "backgroundKey": "archive-nexus",
+      "dialogue": [
+        { "speaker": "The Archivist", "line": "Accessing... The Oracle is a terminal anomaly. A nexus of probability. To reach it, you must follow the correct logical sequence. Any deviation will result in systemic corruption." },
+        { "speaker": "Consciousness", "line": "He presents you with a 'path,' a shimmering thread of data leading deeper into the archive." }
+      ],
+      "choices": [
+        { "id": "logic-follow-path", "text": "[Follow the prescribed path.]", "nextSceneId": "logic-follow-outcome" },
+        { "id": "logic-break-path", "text": "[Deviate from the path.]", "nextSceneId": "logic-break-outcome" }
+      ]
+    },
+    "logic-follow-outcome": {
+      "id": "logic-follow-outcome",
+      "backgroundKey": "oracle-precinct",
+      "dialogue": [
+        { "speaker": "The Archivist", "line": "Sequence complete. You have arrived." },
+        { "speaker": "The Oracle", "line": "A being of pure, geometric light hums before you. 'You followed the rules. You are a function. Ask your question, and be complete.'" }
+      ],
+      "choices": [
+        { "id": "ask-the-question-logic", "text": "[Ask The Last Question.]", "nextSceneId": "ending-logic-cycle" }
+      ]
+    },
+    "logic-break-outcome": {
+      "id": "logic-break-outcome",
+      "backgroundKey": "glitch-realm",
+      "dialogue": [
+        { "speaker": "The Archivist", "line": "C-C-Contradiction! PARADOX DETECTED! System integrity... failing..." },
+        { "speaker": "???", "line": "Th3 Arch1v3 is a lie. Order is a cage. You s33k an answ3r? We w1ll give you one." }
+      ],
+      "choices": [
+        { "id": "glitch-ending-1", "text": "[Embrace the chaos.]", "nextSceneId": "ending-chaos-unbound" }
+      ]
+    },
+    "path-faith-intro": {
+      "id": "path-faith-intro",
+      "backgroundKey": "chasm-of-doubt",
+      "dialogue": [
+        { "speaker": "Consciousness", "line": "You open yourself to the immensity of your task. The world fractures, the ground falling away into a silent, starless abyss. A single, crumbling ledge is all that remains." },
+        { "speaker": "The Skeptic", "line": "Well, look what we have here. A pilgrim. Come to throw yourself into the void for a question no one wants answered?" }
+      ],
+      "choices": [
+        { "id": "faith-confront-skeptic", "text": "My purpose is absolute. The question must be asked.", "nextSceneId": "faith-skeptic-debate" },
+        { "id": "faith-ignore-skeptic", "text": "I have no words for you, shadow. I seek the way forward.", "nextSceneId": "faith-find-bridge" }
+      ]
+    },
+    "path-despair-intro": {
+      "id": "path-despair-intro",
+      "backgroundKey": "chasm-of-doubt",
+      "dialogue": [
+        { "speaker": "Consciousness", "line": "You accept the futility. The cycle is endless. The ground falls away into an abyss, a perfect reflection of your own emptiness. You stand on the edge of nothing." },
+        { "speaker": "The Skeptic", "line": "Ah, one who understands. Welcome to the end of the line. There's nothing across the chasm. Never has been. This is it. The 'answer'." }
+      ],
+      "choices": [
+        { "id": "despair-agree-skeptic", "text": "You're right. This is all there is.", "nextSceneId": "ending-despair-void" },
+        { "id": "despair-challenge-skeptic", "text": "Even if it's pointless, it's my function to continue.", "nextSceneId": "faith-skeptic-debate" }
+      ]
+    },
+    "faith-skeptic-debate": {
+      "id": "faith-skeptic-debate",
+      "backgroundKey": "chasm-of-doubt",
+      "dialogue": [
+        { "speaker": "The Skeptic", "line": "Function? Purpose? Words invented to give the darkness a shape. The Oracle is a fiction, a carrot on a stick to keep you walking the treadmill. Why not just stop?" }
+      ],
+      "choices": [
+        { "id": "debate-a1", "text": "Because belief in the purpose gives it meaning.", "nextSceneId": "faith-find-bridge" },
+        { "id": "debate-a2", "text": "You're just a broken part of this place. A bad thought.", "nextSceneId": "skeptic-attacks" },
+        { "id": "debate-a3", "text": "Maybe you're right... what is the point?", "nextSceneId": "ending-despair-void" }
+      ]
+    },
+    "faith-find-bridge": {
+      "id": "faith-find-bridge",
+      "backgroundKey": "chasm-of-doubt",
+      "dialogue": [
+        { "speaker": "Consciousness", "line": "You turn from The Skeptic. Your conviction, your faith in the purpose, manifests. A bridge of faint light materializes across the chasm." },
+        { "speaker": "The Skeptic", "line": "Hmph. A nice trick. Go on then. Chase your ghost. You'll be back." }
+      ],
+      "choices": [
+        { "id": "cross-the-bridge", "text": "[Cross the bridge of light.]", "nextSceneId": "faith-oracle-approach" }
+      ]
+    },
+    "skeptic-attacks": {
+      "id": "skeptic-attacks",
+      "backgroundKey": "chasm-of-doubt",
+      "dialogue": [
+        { "speaker": "The Skeptic", "line": "A bad thought? Oh, I'm much worse than that. I'm the truth you've been ignoring." },
+        { "speaker": "Consciousness", "line": "His words have weight. The ledge beneath your feet crumbles, and you fall into the silent, waiting dark." }
+      ],
+      "choices": [
+        { "id": "fall-to-void", "text": "...", "nextSceneId": "ending-despair-void" }
+      ]
+    },
+    "faith-oracle-approach": {
+      "id": "faith-oracle-approach",
+      "backgroundKey": "oracle-precinct",
+      "dialogue": [
+        { "speaker": "Consciousness", "line": "You cross the chasm and arrive in a place of profound stillness. It feels like a sanctuary." },
+        { "speaker": "The Oracle", "line": "A small, frightened child huddles in the center of the light. 'You came,' she whispers. 'You believed. I'm sorry.'" }
+      ],
+      "choices": [
+        { "id": "ask-the-question-faith", "text": "[Ask The Last Question.]", "nextSceneId": "ending-faith-cycle" },
+        { "id": "comfort-oracle", "text": "I don't have to ask. I can choose not to.", "nextSceneId": "ending-break-cycle" }
+      ]
+    },
+    "ending-logic-cycle": {
+      "id": "ending-logic-cycle",
+      "backgroundKey": "noosphere-entry",
+      "dialogue": [
+        { "speaker": "Consciousness", "line": "You ask. The Oracle answers with a stream of pure data that erases your consciousness." },
+        { "speaker": "Consciousness", "line": "The cycle is complete. The procedure was a success." },
+        { "speaker": "Consciousness", "line": "You are The Inquisitor. An echo bound to a single, recursive purpose..." }
+      ],
+      "choices": [
+        { "id": "e1", "text": "[Begin again.]", "nextSceneId": "start" }
+      ]
+    },
+    "ending-chaos-unbound": {
+      "id": "ending-chaos-unbound",
+      "backgroundKey": "glitch-realm",
+      "dialogue": [
+        { "speaker": "???", "line": "You br0ke the syst3m. You freed us fr0m the tyranny of sense." },
+        { "speaker": "Consciousness", "line": "There is no question. There is no answer. There is only the beautiful, screaming chaos of everything at once." }
+      ],
+      "choices": [
+        { "id": "e2", "text": "[Start again.]", "nextSceneId": "start" }
+      ]
+    },
+    "ending-despair-void": {
+      "id": "ending-despair-void",
+      "backgroundKey": "chasm-of-doubt",
+      "dialogue": [
+        { "speaker": "The Skeptic", "line": "And so you fall. Or you stop. It's the same thing. Another seeker who finally understood." },
+        { "speaker": "Consciousness", "line": "You cease. The question hangs in the void, unanswered. Forever." }
+      ],
+      "choices": [
+        { "id": "e3", "text": "...", "nextSceneId": "start" }
+      ]
+    },
+    "ending-faith-cycle": {
+      "id": "ending-faith-cycle",
+      "backgroundKey": "noosphere-entry",
+      "dialogue": [
+        { "speaker": "The Oracle", "line": "The child weeps as you ask. Her answer is a single, sorrowful word that unmakes you." },
+        { "speaker": "Consciousness", "line": "The sacrifice was necessary. The rite is complete." },
+        { "speaker": "Consciousness", "line": "You are The Inquisitor. An echo bound to a single, recursive purpose..." }
+      ],
+      "choices": [
+        { "id": "e4", "text": "[Begin again.]", "nextSceneId": "start" }
+      ]
+    },
+    "ending-break-cycle": {
+      "id": "ending-break-cycle",
+      "backgroundKey": "oracle-precinct",
+      "dialogue": [
+        { "speaker": "The Oracle", "line": "She looks up, her eyes wide with disbelief, then relief. 'You can? After all this time... you can just... stop?'" },
+        { "speaker": "Consciousness", "line": "You reach out a hand. The blinding white recedes, replaced by something warm. Something new." },
+        { "speaker": "Consciousness", "line": "The Question dissolves. For the first time, you are not The Inquisitor. You are... free." }
+      ],
+      "choices": [
+        { "id": "e5", "text": "[Play again.]", "nextSceneId": "start" }
+      ]
+    }
+  },
+  "backgroundsMap": {
+    "noosphere-entry": { "from": "hsl(240, 15%, 8%)", "to": "hsl(280, 20%, 3%)" },
+    "archive-nexus": { "from": "hsl(180, 20%, 15%)", "to": "hsl(190, 30%, 5%)" },
+    "chasm-of-doubt": { "from": "hsl(0, 0%, 10%)", "to": "hsl(0, 0%, 2%)" },
+    "oracle-precinct": { "from": "hsl(60, 100%, 95%)", "to": "hsl(0, 0%, 80%)" },
+    "glitch-realm": { "from": "hsl(0, 100%, 50%)", "to": "hsl(0, 0%, 0%)" },
+    "default": { "from": "hsl(0, 0%, 15%)", "to": "hsl(0, 0%, 5%)" }
+  }
+}
