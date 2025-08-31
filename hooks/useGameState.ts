@@ -1,7 +1,8 @@
 
+
 import { useState, useCallback, useRef } from 'react';
 import { Scene, Choice } from '../types';
-import { getScene, updateGameState, resetGameState } from '../services/gameService';
+import { getScene, updateGameState, resetGameState, getGameState } from '../services/gameService';
 
 export const useGameState = (initialSceneId: string = 'start') => {
     const [currentScene, setCurrentScene] = useState<Scene | null>(null);
@@ -9,6 +10,7 @@ export const useGameState = (initialSceneId: string = 'start') => {
     const [isChoosing, setIsChoosing] = useState<boolean>(false);
     const [exploredChoices, setExploredChoices] = useState(new Set<string>());
     const [previousSceneChoices, setPreviousSceneChoices] = useState<Choice[] | null>(null);
+    const [currentGameState, setCurrentGameState] = useState<Record<string, any>>({});
 
     // Create refs to hold the latest state values for use in stable callbacks
     const isLoadingRef = useRef(isLoading);
@@ -35,6 +37,7 @@ export const useGameState = (initialSceneId: string = 'start') => {
 
     const restartGame = useCallback(() => {
         resetGameState();
+        setCurrentGameState({});
         setCurrentScene(null);
         setExploredChoices(new Set<string>());
         setPreviousSceneChoices(null);
@@ -47,6 +50,7 @@ export const useGameState = (initialSceneId: string = 'start') => {
 
         if (choice.setState) {
             updateGameState(choice.setState);
+            setCurrentGameState(getGameState()); // Update local state from service
         }
 
         if (choice.type === 'explore') {
@@ -84,6 +88,7 @@ export const useGameState = (initialSceneId: string = 'start') => {
     // Function to kick off the game. This is now stable and won't cause effect loops.
     const startGame = useCallback(() => {
         if (isLoadingRef.current) return;
+        setCurrentGameState(getGameState());
         loadScene(initialSceneId);
     }, [loadScene, initialSceneId]);
 
@@ -92,6 +97,7 @@ export const useGameState = (initialSceneId: string = 'start') => {
         isLoading,
         isChoosing,
         exploredChoices,
+        currentGameState,
         handleChoiceSelect,
         handleTypingComplete,
         restartGame,

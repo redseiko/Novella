@@ -115,6 +115,14 @@ export const resetGameState = () => {
     gameState = {};
 };
 
+/**
+ * Retrieves a copy of the current game state.
+ * @returns The current game state object.
+ */
+export const getGameState = (): Record<string, any> => {
+    return { ...gameState }; // Return a copy to prevent direct mutation
+};
+
 export const getActiveStoryMetadata = (): StoryMetadata => {
     ensureReady();
     return activeStory!.metadata;

@@ -1,4 +1,5 @@
 
+
 import React, { useEffect } from 'react';
 import { useGameState } from '../hooks/useGameState';
 import { StoryData } from '../hooks/useStoryManager';
@@ -11,7 +12,7 @@ interface GameViewProps {
     storyData: StoryData;
     fontSizeClassDialog: string;
     fontSizeClassChoices: string;
-    onUpdate: (update: { sceneId?: string; backgroundKey?: string; }) => void;
+    onUpdate: (update: { sceneId?: string; backgroundKey?: string; gameState?: Record<string, any> }) => void;
 }
 
 const GameView: React.FC<GameViewProps> = ({ storyData, fontSizeClassDialog, fontSizeClassChoices, onUpdate }) => {
@@ -20,6 +21,7 @@ const GameView: React.FC<GameViewProps> = ({ storyData, fontSizeClassDialog, fon
         isLoading,
         isChoosing,
         exploredChoices,
+        currentGameState,
         handleChoiceSelect,
         handleTypingComplete,
         startGame,
@@ -33,8 +35,9 @@ const GameView: React.FC<GameViewProps> = ({ storyData, fontSizeClassDialog, fon
         onUpdate({
             sceneId: currentScene?.id,
             backgroundKey: currentScene?.backgroundKey,
+            gameState: currentGameState,
         });
-    }, [currentScene, onUpdate]);
+    }, [currentScene, currentGameState, onUpdate]);
 
     const isInitialLoading = !currentScene && isLoading;
 

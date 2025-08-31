@@ -20,7 +20,7 @@ export const UI = {
   
   // A CSS `text-shadow` value for creating a crisp outline on text.
   // This makes text readable against any background.
-  TEXT_OUTLINE_STYLE: '-1.5px -1.5px 0 rgba(0,0,0,0.9), 1.5px -1.5px 0 rgba(0,0,0,0.75), -1.5px 1.5px 0 rgba(0,0,0,0.75), 1.5px 1.5px 0 rgba(0,0,0,0.75), -2px 2px 6px rgba(0,0,0,0.75)',
+  TEXT_OUTLINE_STYLE: '-1.5px -1.5px 0 rgba(0,0,0,0.95), 1.5px -1.5px 0 rgba(0,0,0,0.95), -1.5px 1.5px 0 rgba(0,0,0,0.95), 1.5px 1.5px 0 rgba(0,0,0,0.75), -2px 2px 6px rgba(0,0,0,0.75)',
 
   // The minimum height of the dialog box. Adjust to prevent layout shifts.
   // Use Tailwind CSS `min-h` classes.

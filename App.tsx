@@ -1,5 +1,6 @@
 
 
+
 import React, { useState, useCallback, useEffect } from 'react';
 import { UI, DEBUG } from './config';
 import { useUISettings } from './hooks/useUISettings';
@@ -17,6 +18,7 @@ interface DebugInfo {
     sceneId?: string;
     backgroundKey?: string;
     backgroundType?: string;
+    gameState?: Record<string, any>;
 }
 
 interface BackgroundUpdateInfo {
@@ -40,7 +42,7 @@ const App: React.FC = () => {
     } = useUISettings();
 
     const [isGameStarted, setIsGameStarted] = useState(false);
-    const [debugInfo, setDebugInfo] = useState<Partial<DebugInfo>>({});
+    const [debugInfo, setDebugInfo] = useState<Partial<DebugInfo>>({ gameState: {} });
     
     useEffect(() => {
         document.documentElement.style.setProperty('--text-outline-style', UI.TEXT_OUTLINE_STYLE);
@@ -54,7 +56,7 @@ const App: React.FC = () => {
     const restartGame = useCallback(() => {
         setIsGameStarted(false);
         // Reset debug info for title screen
-        setDebugInfo({});
+        setDebugInfo({ gameState: {} });
     }, []);
 
     // When a new story is selected, change the story data and restart to the title screen.
@@ -89,6 +91,7 @@ const App: React.FC = () => {
                 sceneId={debugInfo.sceneId}
                 backgroundKey={backgroundKey}
                 backgroundType={debugInfo.backgroundType}
+                gameState={debugInfo.gameState}
             />}
             
             <div className="fixed top-4 right-4 z-50 flex items-center space-x-2">
