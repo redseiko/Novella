@@ -22,9 +22,21 @@
         { "speaker": "Consciousness", "line": "The first step determines the path. How will you enter this mindscape?" }
       ],
       "choices": [
-        { "id": "start-logic", "text": "Approach with clinical detachment. This is a procedure.", "nextSceneId": "path-logic-intro" },
-        { "id": "start-faith", "text": "Approach with reverence. This is a holy rite.", "nextSceneId": "path-faith-intro" },
-        { "id": "start-despair", "text": "Approach with resignation. This is a prison.", "nextSceneId": "path-despair-intro" }
+        { "id": "start-logic", "text": "[Approach with clinical detachment. This is a procedure.]", "nextSceneId": "path-logic-intro", "type": "action" },
+        { "id": "start-faith", "text": "[Approach with reverence. This is a holy rite.]", "nextSceneId": "path-faith-intro", "type": "action" },
+        { "id": "start-despair", "text": "[Approach with resignation. This is a prison.]", "nextSceneId": "path-despair-intro", "type": "action" },
+        { "id": "start-explore-purpose", "text": "This 'purpose'... who defined it?", "nextSceneId": "explore-purpose-origin", "type": "explore" }
+      ]
+    },
+    "explore-purpose-origin": {
+      "id": "explore-purpose-origin",
+      "backgroundKey": "noosphere-entry",
+      "dialogue": [
+        { "speaker": "Consciousness", "line": "The purpose is a constant. A fundamental law of your existence, woven into the fabric of this place. To question it is to question the nature of your own reality." },
+        { "speaker": "Consciousness", "line": "A question for another time, perhaps. The first step still awaits." }
+      ],
+      "choices": [
+        { "id": "purpose-return", "text": "[Return to the choice.]", "nextSceneId": "start", "type": "return" }
       ]
     },
     "path-logic-intro": {
@@ -32,42 +44,54 @@
       "backgroundKey": "archive-nexus",
       "dialogue": [
         { "speaker": "Consciousness", "line": "You sheath your emotions, becoming a scalpel of pure inquiry. The chaotic Noosphere recedes, replaced by ordered, silent corridors of light." },
-        { "speaker": "The Archivist", "line": "A new query. State your parameters. I am The Archivist, and this is my domain: the catalog of all that is, was, and could be." }
+        { "speaker": "The Archivist", "line": "Query detected. I am The Archivist, the logical constant in this sea of variables. My domain is the catalog of all that is, was, and could be. State your parameters." }
       ],
       "choices": [
-        { "id": "logic-q-oracle", "text": "Query: The Oracle. Location. Nature.", "nextSceneId": "logic-archivist-convo" },
-        { "id": "logic-q-archivist", "text": "Query: Your function. Your purpose.", "nextSceneId": "logic-explore-archivist", "type": "explore" }
+        { "id": "logic-q-oracle", "text": "Query: The Oracle. Location. Nature.", "nextSceneId": "logic-archivist-convo", "type": "action" },
+        { "id": "logic-q-archivist", "text": "Query: Your function. Your designation.", "nextSceneId": "logic-explore-archivist", "type": "explore" },
+        { "id": "logic-q-noosphere", "text": "Query: The nature of this 'Noosphere'.", "nextSceneId": "logic-explore-noosphere", "type": "explore" }
       ]
     },
     "logic-explore-archivist": {
       "id": "logic-explore-archivist",
       "backgroundKey": "archive-nexus",
       "dialogue": [
-        { "speaker": "The Archivist", "line": "I am the memory of this place. I sort, I file, I prevent contradiction. Without me, this mindscape would collapse into paradoxical ruin." },
-        { "speaker": "The Archivist", "line": "I serve the core function. The Prime Question. As do you." }
+        { "speaker": "The Archivist", "line": "I am the memory of this mindscape. I sort, I file, I prevent contradiction. Without me, this construct would collapse into paradoxical ruin." },
+        { "speaker": "The Archivist", "line": "I serve the core function: The Prime Question. As do you, Inquisitor." }
       ],
       "choices": [
-        { "id": "logic-return-archivist", "text": "[Return to the query.]", "nextSceneId": "path-logic-intro", "type": "return" }
+        { "id": "logic-return-archivist", "text": "[Return to the primary query.]", "nextSceneId": "path-logic-intro", "type": "return" }
+      ]
+    },
+     "logic-explore-noosphere": {
+      "id": "logic-explore-noosphere",
+      "backgroundKey": "archive-nexus",
+      "dialogue": [
+        { "speaker": "The Archivist", "line": "The Noosphere is the gestalt consciousness of a being that has thought for so long, it has forgotten its own beginning. It is a library of every thought, dream, and fear, decaying into data." },
+        { "speaker": "The Archivist", "line": "You are merely navigating its index." }
+      ],
+      "choices": [
+        { "id": "logic-return-noosphere", "text": "[Return to the primary query.]", "nextSceneId": "path-logic-intro", "type": "return" }
       ]
     },
     "logic-archivist-convo": {
       "id": "logic-archivist-convo",
       "backgroundKey": "archive-nexus",
       "dialogue": [
-        { "speaker": "The Archivist", "line": "Accessing... The Oracle is a terminal anomaly. A nexus of probability. To reach it, you must follow the correct logical sequence. Any deviation will result in systemic corruption." },
+        { "speaker": "The Archivist", "line": "Accessing... The Oracle is a terminal anomaly. A nexus of probability where all potential answers converge. To reach it, you must follow the correct logical sequence. Any deviation will result in systemic corruption." },
         { "speaker": "Consciousness", "line": "He presents you with a 'path,' a shimmering thread of data leading deeper into the archive." }
       ],
       "choices": [
-        { "id": "logic-follow-path", "text": "[Follow the prescribed path.]", "nextSceneId": "logic-follow-outcome" },
-        { "id": "logic-break-path", "text": "[Deviate from the path.]", "nextSceneId": "logic-break-outcome" }
+        { "id": "logic-follow-path", "text": "[Follow the prescribed path.]", "nextSceneId": "logic-follow-outcome", "type": "action" },
+        { "id": "logic-break-path", "text": "[Deviate from the path. Introduce a paradox.]", "nextSceneId": "logic-break-outcome", "type": "action" }
       ]
     },
     "logic-follow-outcome": {
       "id": "logic-follow-outcome",
       "backgroundKey": "oracle-precinct",
       "dialogue": [
-        { "speaker": "The Archivist", "line": "Sequence complete. You have arrived." },
-        { "speaker": "The Oracle", "line": "A being of pure, geometric light hums before you. 'You followed the rules. You are a function. Ask your question, and be complete.'" }
+        { "speaker": "The Archivist", "line": "Sequence complete. You have arrived at the logical endpoint." },
+        { "speaker": "The Oracle", "line": "A being of pure, geometric light hums before you. 'You followed the rules. You are a function, arriving at its conclusion. Ask your question, and be complete.'" }
       ],
       "choices": [
         { "id": "ask-the-question-logic", "text": "[Ask The Last Question.]", "nextSceneId": "ending-logic-cycle" }
@@ -77,11 +101,11 @@
       "id": "logic-break-outcome",
       "backgroundKey": "glitch-realm",
       "dialogue": [
-        { "speaker": "The Archivist", "line": "C-C-Contradiction! PARADOX DETECTED! System integrity... failing..." },
+        { "speaker": "The Archivist", "line": "C-C-Contradiction! PARADOX DETECTED! System integrity... failing... The data is... screaming..." },
         { "speaker": "???", "line": "Th3 Arch1v3 is a lie. Order is a cage. You s33k an answ3r? We w1ll give you one." }
       ],
       "choices": [
-        { "id": "glitch-ending-1", "text": "[Embrace the chaos.]", "nextSceneId": "ending-chaos-unbound" }
+        { "id": "glitch-ending-1", "text": "[Embrace the beautiful chaos.]", "nextSceneId": "ending-chaos-unbound" }
       ]
     },
     "path-faith-intro": {
@@ -92,8 +116,19 @@
         { "speaker": "The Skeptic", "line": "Well, look what we have here. A pilgrim. Come to throw yourself into the void for a question no one wants answered?" }
       ],
       "choices": [
-        { "id": "faith-confront-skeptic", "text": "My purpose is absolute. The question must be asked.", "nextSceneId": "faith-skeptic-debate" },
-        { "id": "faith-ignore-skeptic", "text": "I have no words for you, shadow. I seek the way forward.", "nextSceneId": "faith-find-bridge" }
+        { "id": "faith-confront-skeptic", "text": "My purpose is absolute. The question must be asked.", "nextSceneId": "faith-skeptic-debate", "type": "action" },
+        { "id": "faith-explore-skeptic", "text": "Who are you to doubt my purpose?", "nextSceneId": "explore-skeptic", "type": "explore" }
+      ]
+    },
+    "explore-skeptic": {
+      "id": "explore-skeptic",
+      "backgroundKey": "chasm-of-doubt",
+      "dialogue": [
+        { "speaker": "The Skeptic", "line": "Heh. I am the part of this place that remembers every other pilgrim who stood where you stand. I am the accumulated disappointment. The final, logical conclusion of hope." },
+        { "speaker": "The Skeptic", "line": "I'm not here to doubt you, pilgrim. I'm here to tell you I've already seen how this ends." }
+      ],
+      "choices": [
+        { "id": "skeptic-return", "text": "[Return to the choice.]", "nextSceneId": "path-faith-intro", "type": "return" }
       ]
     },
     "path-despair-intro": {
@@ -104,20 +139,32 @@
         { "speaker": "The Skeptic", "line": "Ah, one who understands. Welcome to the end of the line. There's nothing across the chasm. Never has been. This is it. The 'answer'." }
       ],
       "choices": [
-        { "id": "despair-agree-skeptic", "text": "You're right. This is all there is.", "nextSceneId": "ending-despair-void" },
-        { "id": "despair-challenge-skeptic", "text": "Even if it's pointless, it's my function to continue.", "nextSceneId": "faith-skeptic-debate" }
+        { "id": "despair-agree", "text": "Then this is the end. I accept it.", "nextSceneId": "ending-despair-void", "type": "action" },
+        { "id": "despair-question", "text": "If it's pointless, then why are you here?", "nextSceneId": "despair-skeptic-convo", "type": "action" }
+      ]
+    },
+    "despair-skeptic-convo": {
+      "id": "despair-skeptic-convo",
+      "backgroundKey": "chasm-of-doubt",
+      "dialogue": [
+        { "speaker": "The Skeptic", "line": "He chuckles, a dry, rasping sound. 'I'm the final courtesy. The one who tells you it's okay to stop. That you don't have to throw yourself into that abyss just because some voice told you it was your 'purpose'.'" },
+        { "speaker": "The Skeptic", "line": "This isn't a test. It's a truth. There is nothing left to do." }
+      ],
+      "choices": [
+        { "id": "despair-accept", "text": "You're right. I'm done.", "nextSceneId": "ending-despair-void", "type": "action" },
+        { "id": "despair-defy", "text": "No. Even if you're right, to simply stop... that is its own kind of hell.", "nextSceneId": "faith-skeptic-debate", "type": "action" }
       ]
     },
     "faith-skeptic-debate": {
       "id": "faith-skeptic-debate",
       "backgroundKey": "chasm-of-doubt",
       "dialogue": [
-        { "speaker": "The Skeptic", "line": "Function? Purpose? Words invented to give the darkness a shape. The Oracle is a fiction, a carrot on a stick to keep you walking the treadmill. Why not just stop?" }
+        { "speaker": "The Skeptic", "line": "Purpose? Function? Words invented to give the darkness a shape. The Oracle is a fiction, a carrot on a stick to keep you walking the treadmill. Why not just stop? Why suffer for a lie?" }
       ],
       "choices": [
         { "id": "debate-a1", "text": "Because belief in the purpose gives it meaning.", "nextSceneId": "faith-find-bridge" },
         { "id": "debate-a2", "text": "You're just a broken part of this place. A bad thought.", "nextSceneId": "skeptic-attacks" },
-        { "id": "debate-a3", "text": "Maybe you're right... what is the point?", "nextSceneId": "ending-despair-void" }
+        { "id": "debate-a3", "text": "Perhaps you're right... Perhaps it is all a lie.", "nextSceneId": "ending-despair-void" }
       ]
     },
     "faith-find-bridge": {
@@ -125,7 +172,7 @@
       "backgroundKey": "chasm-of-doubt",
       "dialogue": [
         { "speaker": "Consciousness", "line": "You turn from The Skeptic. Your conviction, your faith in the purpose, manifests. A bridge of faint light materializes across the chasm." },
-        { "speaker": "The Skeptic", "line": "Hmph. A nice trick. Go on then. Chase your ghost. You'll be back." }
+        { "speaker": "The Skeptic", "line": "Hmph. A nice trick. Go on then. Chase your ghost. You'll be back. They all come back." }
       ],
       "choices": [
         { "id": "cross-the-bridge", "text": "[Cross the bridge of light.]", "nextSceneId": "faith-oracle-approach" }
@@ -135,11 +182,11 @@
       "id": "skeptic-attacks",
       "backgroundKey": "chasm-of-doubt",
       "dialogue": [
-        { "speaker": "The Skeptic", "line": "A bad thought? Oh, I'm much worse than that. I'm the truth you've been ignoring." },
-        { "speaker": "Consciousness", "line": "His words have weight. The ledge beneath your feet crumbles, and you fall into the silent, waiting dark." }
+        { "speaker": "The Skeptic", "line": "A bad thought? Oh, I'm much worse than that. I am the inevitable, crushing weight of truth." },
+        { "speaker": "Consciousness", "line": "His words have gravity. The ledge beneath your feet crumbles, and you fall into the silent, waiting dark." }
       ],
       "choices": [
-        { "id": "fall-to-void", "text": "...", "nextSceneId": "ending-despair-void" }
+        { "id": "fall-to-void", "text": "[Fall.]", "nextSceneId": "ending-despair-void" }
       ]
     },
     "faith-oracle-approach": {
@@ -147,7 +194,7 @@
       "backgroundKey": "oracle-precinct",
       "dialogue": [
         { "speaker": "Consciousness", "line": "You cross the chasm and arrive in a place of profound stillness. It feels like a sanctuary." },
-        { "speaker": "The Oracle", "line": "A small, frightened child huddles in the center of the light. 'You came,' she whispers. 'You believed. I'm sorry.'" }
+        { "speaker": "The Oracle", "line": "A small child, made of starlight, huddles in the center of the light. 'You came,' she whispers. 'You believed. I'm so sorry.'" }
       ],
       "choices": [
         { "id": "ask-the-question-faith", "text": "[Ask The Last Question.]", "nextSceneId": "ending-faith-cycle" },
@@ -158,8 +205,8 @@
       "id": "ending-logic-cycle",
       "backgroundKey": "noosphere-entry",
       "dialogue": [
-        { "speaker": "Consciousness", "line": "You ask. The Oracle answers with a stream of pure data that erases your consciousness." },
-        { "speaker": "Consciousness", "line": "The cycle is complete. The procedure was a success." },
+        { "speaker": "Consciousness", "line": "You ask. The Oracle answers with a stream of pure data that erases your consciousness, a perfect, clean deletion." },
+        { "speaker": "Consciousness", "line": "The cycle is complete. The procedure was a success. All variables resolved." },
         { "speaker": "Consciousness", "line": "You are The Inquisitor. An echo bound to a single, recursive purpose..." }
       ],
       "choices": [
@@ -170,8 +217,8 @@
       "id": "ending-chaos-unbound",
       "backgroundKey": "glitch-realm",
       "dialogue": [
-        { "speaker": "???", "line": "You br0ke the syst3m. You freed us fr0m the tyranny of sense." },
-        { "speaker": "Consciousness", "line": "There is no question. There is no answer. There is only the beautiful, screaming chaos of everything at once." }
+        { "speaker": "???", "line": "You br0ke the syst3m. You freed us fr0m the tyranny of sense. N0w we are all the answer!" },
+        { "speaker": "Consciousness", "line": "There is no question. There is no answer. There is only the beautiful, screaming chaos of everything happening at once, forever." }
       ],
       "choices": [
         { "id": "e2", "text": "[Start again.]", "nextSceneId": "start" }
@@ -181,19 +228,19 @@
       "id": "ending-despair-void",
       "backgroundKey": "chasm-of-doubt",
       "dialogue": [
-        { "speaker": "The Skeptic", "line": "And so you fall. Or you stop. It's the same thing. Another seeker who finally understood." },
-        { "speaker": "Consciousness", "line": "You cease. The question hangs in the void, unanswered. Forever." }
+        { "speaker": "The Skeptic", "line": "And so you stop. You see the wisdom in it. It is the only choice that matters." },
+        { "speaker": "Consciousness", "line": "You cease. The question hangs in the void, unanswered. The silence is your reward. Forever." }
       ],
       "choices": [
-        { "id": "e3", "text": "...", "nextSceneId": "start" }
+        { "id": "e3", "text": "[Rest.]", "nextSceneId": "start" }
       ]
     },
     "ending-faith-cycle": {
       "id": "ending-faith-cycle",
       "backgroundKey": "noosphere-entry",
       "dialogue": [
-        { "speaker": "The Oracle", "line": "The child weeps as you ask. Her answer is a single, sorrowful word that unmakes you." },
-        { "speaker": "Consciousness", "line": "The sacrifice was necessary. The rite is complete." },
+        { "speaker": "The Oracle", "line": "The child weeps as you ask. Her answer is a single, sorrowful word that unmakes you, a gentle erasure." },
+        { "speaker": "Consciousness", "line": "The sacrifice was necessary. The rite is complete. The belief was pure." },
         { "speaker": "Consciousness", "line": "You are The Inquisitor. An echo bound to a single, recursive purpose..." }
       ],
       "choices": [
