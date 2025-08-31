@@ -19,13 +19,13 @@ export const initializeGameService = async (): Promise<void> => {
 
     try {
         // 1. Fetch the story index file.
-        const indexResponse = await fetch('/stories/index.json');
+        const indexResponse = await fetch('./stories/index.json');
         if (!indexResponse.ok) throw new Error(`HTTP error! status: ${indexResponse.status}`);
         const storyIds: string[] = await indexResponse.json();
 
         // 2. Fetch each story listed in the index.
         await Promise.all(storyIds.map(async (storyId) => {
-            const path = `/stories/${storyId}/story.json`;
+            const path = `./stories/${storyId}/story.json`;
             try {
                 const storyResponse = await fetch(path);
                 if (!storyResponse.ok) throw new Error(`HTTP error! status: ${storyResponse.status}`);

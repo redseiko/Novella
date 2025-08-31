@@ -49,7 +49,7 @@ const Background: React.FC<BackgroundProps> = ({ backgroundKey, backgroundsMap, 
             // If the component has unmounted, stop trying to fetch images.
             if (controller.signal.aborted) return;
 
-            const imageUrlPath = `/stories/${activeStoryId}/background/${backgroundKey}.${ext}`;
+            const imageUrlPath = `./stories/${activeStoryId}/background/${backgroundKey}.${ext}`;
             try {
                 const response = await fetch(imageUrlPath, { signal: controller.signal });
                 if (response.ok) {
