@@ -10,7 +10,6 @@ export const useGameState = (initialSceneId: string = 'start') => {
     const [isLoading, setIsLoading] = useState<boolean>(true);
     const [isChoosing, setIsChoosing] = useState<boolean>(false);
     const [exploredChoices, setExploredChoices] = useState(new Set<string>());
-    const [previousSceneChoices, setPreviousSceneChoices] = useState<Choice[] | null>(null);
     const [currentGameState, setCurrentGameState] = useState<Record<string, any>>({});
     const [currentChapter, setCurrentChapter] = useState<StoryChapter | null>(null);
     const [isReturning, setIsReturning] = useState(false);
@@ -51,7 +50,6 @@ export const useGameState = (initialSceneId: string = 'start') => {
         setDialogueForDisplay([]);
         setCurrentChapter(null);
         setExploredChoices(new Set<string>());
-        setPreviousSceneChoices(null);
         setIsLoading(true);
         setIsChoosing(false);
     }, []);
@@ -65,14 +63,12 @@ export const useGameState = (initialSceneId: string = 'start') => {
         }
 
         if (choice.type === 'explore') {
-            setPreviousSceneChoices(currentSceneRef.current?.choices ?? []);
             setExploredChoices(prev => new Set(prev).add(choice.id));
             loadScene(choice.nextSceneId);
         } else if (choice.type === 'return') {
             loadScene(choice.nextSceneId, { isReturning: true });
         } else { // 'action' type or undefined
             setExploredChoices(new Set());
-            setPreviousSceneChoices(null);
             loadScene(choice.nextSceneId);
         }
     }, [loadScene]);

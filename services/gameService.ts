@@ -1,5 +1,5 @@
 
-import { Scene, StoryManifest, StoryManifestInfo, GameData, StoryChapter, StoryMetadata } from '../types';
+import { Scene, StoryManifest, StoryManifestInfo, StoryChapter } from '../types';
 import { GAMEPLAY, STORY } from '../config';
 
 // Story Registry
