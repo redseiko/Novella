@@ -110,10 +110,14 @@ const DialogBox: React.FC<DialogBoxProps> = ({ sceneId, dialogue, onTypingComple
   const speakerColorClass = hasSpeaker
     ? (speakerColors[currentSpeaker] || speakerColors['default'])
     : 'text-transparent';
+  
+  const dialogueTextStyle = hasSpeaker
+    ? 'font-serif text-gray-200 leading-snug font-medium'
+    : UI.DIALOG_BOX_SPEAKERLESS_STYLE;
 
   return (
     <div 
-      className={`${UI.DIALOG_BOX_BG_COLOR} border-t-2 border-gray-500/50 p-6 rounded-lg cursor-pointer relative flex flex-col ${UI.DIALOG_BOX_MIN_HEIGHT}`}
+      className={`${UI.DIALOG_BOX_BG_COLOR} border-t-2 border-gray-500/50 px-5 py-3 rounded-lg cursor-pointer relative flex flex-col ${UI.DIALOG_BOX_MIN_HEIGHT}`}
       onClick={handleInteraction}
       role="button"
       tabIndex={0}
@@ -122,10 +126,10 @@ const DialogBox: React.FC<DialogBoxProps> = ({ sceneId, dialogue, onTypingComple
       aria-atomic="true"
     >
       <div>
-        <span className={`block font-bold font-sans text-center transition-colors duration-300 text-outline ${UI.DIALOG_BOX_SPEAKER_MARGIN} ${fontSizeClass} ${speakerColorClass}`}>
+        <span className={`block font-bold font-sans text-center transition-colors duration-300 text-outline ${UI.DIALOG_BOX_SPEAKER_VERTICAL_MARGIN} ${fontSizeClass} ${speakerColorClass}`}>
           {hasSpeaker ? currentSpeaker : '\u00A0' /* Non-breaking space to preserve height */}
         </span>
-        <p className={`font-serif text-gray-200 leading-snug font-medium text-outline ${fontSizeClass}`}>
+        <p className={`${dialogueTextStyle} text-outline ${fontSizeClass}`}>
           {displayedText}
           {!isParagraphComplete && !isLoading && <span className="inline-block w-2 h-5 ml-1 bg-gray-200 animate-pulse" />}
         </p>

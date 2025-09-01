@@ -86,6 +86,9 @@ All choice text must be from the player's first-person perspective. The format d
 
 -   **The Narrator is the ONLY one who describes actions.** Tones of voice, physical gestures, character expressions, and environmental descriptions *must* come from the `Narrator`.
 -   **All other characters ONLY speak.** Their `"line"` property should contain *only* spoken dialogue.
+-   **Pacing and Readability**: For a more cinematic and readable experience, avoid long paragraphs in a single `"line"` property. Split dialogue that contains multiple distinct sentences or ideas into separate dialogue objects. This gives each line more impact and allows the player to absorb the story at a natural pace.
+    -   **Avoid:** `{"speaker": "Narrator", "line": "The path is cold and the air is still. Ahead, a cabin sits waiting."}`
+    -   **Good:** `{"speaker": "Narrator", "line": "The path is cold and the air is still."},{"speaker": "Narrator", "line": "Ahead, a cabin sits waiting."}`
 
 ### Good Example:
 

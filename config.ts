@@ -14,8 +14,8 @@ export const UI = {
   // An array of Tailwind CSS classes for dynamic font sizing.
   // The order is from smallest to largest.
   FONT_SIZES: {
-    dialog: ['text-xl', 'text-2xl', '[font-size:27px]', 'text-3xl', 'text-4xl'],
-    choices: ['text-xl', 'text-2xl', '[font-size:27px]', 'text-3xl', 'text-4xl'],
+    dialog: ['text-xl', 'text-2xl', '[font-size:27px]', 'text-4xl'],
+    choices: ['text-xl', 'text-2xl', '[font-size:27px]', 'text-4xl'],
   },
   
   // A CSS `text-shadow` value for creating a crisp outline on text.
@@ -24,13 +24,16 @@ export const UI = {
 
   // The minimum height of the dialog box. Adjust to prevent layout shifts.
   // Use Tailwind CSS `min-h` classes.
-  DIALOG_BOX_MIN_HEIGHT: 'min-h-[220px]',
+  DIALOG_BOX_MIN_HEIGHT: 'min-h-[230px]',
 
   // The background color of the dialog box.
   DIALOG_BOX_BG_COLOR: 'bg-transparent',
   
-  // Margin below the speaker's name in the dialog box.
-  DIALOG_BOX_SPEAKER_MARGIN: 'mb-1',
+  // Vertical margin for the speaker's name in the dialog box.
+  DIALOG_BOX_SPEAKER_VERTICAL_MARGIN: 'mb-1',
+
+  // The style for dialogue lines that have no speaker.
+  DIALOG_BOX_SPEAKERLESS_STYLE: 'italic text-gray-300 font-serif leading-snug font-medium',
 
   // The minimum height of the choices panel placeholder.
   CHOICES_PANEL_MIN_HEIGHT: 'min-h-[60px]',

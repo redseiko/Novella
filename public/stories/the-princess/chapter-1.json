@@ -1,4 +1,3 @@
-
 {
   "id": "chapter-1",
   "metadata": {
@@ -9,9 +8,12 @@
       "id": "start",
       "backgroundKey": "forest-path-initial",
       "dialogue": [
-        { "speaker": "Narrator", "line": "The path is cold, the air still and heavy with unspoken history. The skeletal trees claw at a bruised, perpetually twilight sky. Ahead, a cabin sits hunched and waiting. It is your destination." },
+        { "speaker": "Narrator", "line": "The path is cold, the air still and heavy with unspoken history. The skeletal trees claw at a bruised, perpetually twilight sky." },
+        { "speaker": "Narrator", "line": "Ahead, a cabin sits hunched and waiting. It is your destination." },
         { "speaker": "Narrator", "line": "A blade hangs at your hip. Its weight is unfamiliar, yet its purpose is clear." },
-        { "speaker": "Narrator", "line": "There is a Princess inside. You are here to slay her. If you do this, the world will be saved. It is a simple, righteous task. Do not complicate it." }
+        { "speaker": "Narrator", "line": "There is a Princess inside. You are here to slay her." },
+        { "speaker": "Narrator", "line": "If you do this, the world will be saved." },
+        { "speaker": "Narrator", "line": "It is a simple, righteous task. Do not complicate it." }
       ],
       "choices": [
         { "id": "start-exp-path", "text": "[Look closer at the path.]", "nextSceneId": "explore-path", "type": "explore" },
@@ -24,8 +26,12 @@
       "id": "explore-blade",
       "backgroundKey": "forest-path-initial",
       "dialogue": [
-        { "speaker": "Narrator", "line": "You draw the blade. It is plain, unadorned steel, yet it feels impossibly sharp, impossibly real in this faded world. It has no history but the one you are about to write with it." },
-        { "speaker": "Narrator", "line": "It is a tool. A key. It opens the lock that is the Princess. That is all you need to know." }
+        { "speaker": "Narrator", "line": "You draw the blade." },
+        { "speaker": "Narrator", "line": "It is plain, unadorned steel, yet it feels impossibly sharp, impossibly real in this faded world." },
+        { "speaker": "Narrator", "line": "It has no history but the one you are about to write with it." },
+        { "speaker": "Narrator", "line": "It is a tool. A key." },
+        { "speaker": "Narrator", "line": "It opens the lock that is the Princess." },
+        { "speaker": "Narrator", "line": "That is all you need to know." }
       ],
       "choices": [
         { "id": "blade-return", "text": "[Sheathe the blade.]", "nextSceneId": "start", "type": "return" }
@@ -35,8 +41,11 @@
       "id": "explore-path",
       "backgroundKey": "forest-path-initial",
       "dialogue": [
-        { "speaker": "Narrator", "line": "You kneel, examining the path. The dirt is gray and unnaturally packed, as if from the passage of a thousand identical footsteps, all leading one way. There are no other tracks. No signs of life." },
-        { "speaker": "Narrator", "line": "It is the only path. The correct path. The one I have laid for you. Are you done sightseeing? You're wasting time." },
+        { "speaker": "Narrator", "line": "You kneel, examining the path." },
+        { "speaker": "Narrator", "line": "The dirt is gray and unnaturally packed, as if from the passage of a thousand identical footsteps, all leading one way." },
+        { "speaker": "Narrator", "line": "There are no other tracks. No signs of life." },
+        { "speaker": "Narrator", "line": "It is the only path. The correct path. The one I have laid for you." },
+        { "speaker": "Narrator", "line": "Are you done sightseeing? You're wasting time." },
         { "speaker": "Narrator", "line": "As you stand, your boot scuffs something in the dirt. A small, metallic object, tarnished with age." }
       ],
       "choices": [
@@ -48,7 +57,8 @@
       "id": "start-no-locket",
       "backgroundKey": "forest-path-initial",
       "dialogue": [
-        { "speaker": "Narrator", "line": "You ignore the glint of metal in the dirt. It is irrelevant. A distraction from your purpose." },
+        { "speaker": "Narrator", "line": "You ignore the glint of metal in the dirt." },
+        { "speaker": "Narrator", "line": "It is irrelevant. A distraction from your purpose." },
         { "speaker": "Narrator", "line": "You are on the path. The Princess is in the cabin. Your task is simple." }
       ],
       "choices": [
@@ -65,8 +75,8 @@
       "choices": [
         { "id": "locket-exp-locket", "text": "[Examine the locket.]", "nextSceneId": "examine-locket", "type": "explore", "condition": { "sawVision": null } },
         { "id": "locket-exp-vision", "text": "What was that vision? Who were those people?", "nextSceneId": "ask-about-vision", "type": "explore", "condition": { "sawVision": true } },
-        { "id": "locket-act-approach", "text": "[Grip the blade.]", "nextSceneId": "cabin-approach" },
-        { "id": "locket-act-hesitate", "text": "This locket... it feels important. Why?", "nextSceneId": "hesitate" }
+        { "id": "locket-act-hesitate", "text": "This locket... it feels important. Why?", "nextSceneId": "hesitate" },
+        { "id": "locket-act-approach", "text": "[Approach the Cabin.]", "nextSceneId": "cabin-approach" }
       ]
     },
     "examine-locket": {
@@ -76,7 +86,9 @@
         { "speaker": "Narrator", "line": "You try to open the locket, but it's rusted shut. As your thumb traces the faded engraving, the world dissolves into a blinding, silent white..." },
         { "speaker": "", "line": "A vision: A sun-drenched glade. A man with a kind face sketches in a book. A woman with loving eyes weaves flowers into her hair. Their laughter is a sound you've never heard before." },
         { "speaker": "???", "line": "He's trapped her... He promised me... He promised..." },
-        { "speaker": "Narrator", "line": "The vision shatters. You are back on the path, the cold locket in your palm. What was that? A trick? A memory? Irrelevant. GET ON WITH IT." }
+        { "speaker": "Narrator", "line": "The vision shatters. You are back on the path, the cold locket in your palm." },
+        { "speaker": "Narrator", "line": "What was that? A trick? A memory?" },
+        { "speaker": "Narrator", "line": "Irrelevant. GET ON WITH IT." }
       ],
       "choices": [
         { "id": "locket-return", "text": "[Put the locket away.]", "nextSceneId": "start-with-locket", "type": "return", "setState": { "sawVision": true } }
@@ -86,8 +98,10 @@
       "id": "ask-about-vision",
       "backgroundKey": "forest-path-hesitation",
       "dialogue": [
-        { "speaker": "Narrator", "line": "It was a data fragment. A corrupted memory from a previous version of this story. It means nothing. It is a bug." },
-        { "speaker": "Narrator", "line": "Now, stop poking at the seams of this reality and get on with your task. You are dangerously close to breaking something." }
+        { "speaker": "Narrator", "line": "It was a data fragment. A corrupted memory from a previous version of this story." },
+        { "speaker": "Narrator", "line": "It means nothing. It is a bug." },
+        { "speaker": "Narrator", "line": "Now, stop poking at the seams of this reality and get on with your task." },
+        { "speaker": "Narrator", "line": "You are dangerously close to breaking something." }
       ],
       "choices": [
         { "id": "vision-return", "text": "A bug...", "nextSceneId": "start-with-locket", "type": "return" }
@@ -97,8 +111,9 @@
       "id": "hesitate",
       "backgroundKey": "forest-path-hesitation",
       "dialogue": [
-        { "speaker": "Narrator", "line": "A thought, sudden and sharp as broken glass, cuts through the fog in your mind. 'Why am I here? I've never met this person. This isn't justice. This is murder.'" },
-        { "speaker": "Narrator", "line": "Your feelings are irrelevant. They are a bug in the code. You are the hero. I am the storyteller. This is how the story must go. Now, GET IN THERE." }
+        { "speaker": "Narrator", "line": "Your feelings are irrelevant. They are a bug in the code." },
+        { "speaker": "Narrator", "line": "You are the hero. I am the storyteller. This is how the story must go." },
+        { "speaker": "Narrator", "line": "Now, GET IN THERE." }
       ],
       "choices": [
         { "id": "hesitate-exp-narrator", "text": "Who are you? What is this voice in my head?", "nextSceneId": "explore-narrator-self", "type": "explore", "condition": { "askedWhoNarrator": null } },
@@ -113,29 +128,35 @@
       "id": "explore-world",
       "backgroundKey": "forest-path-hesitation",
       "dialogue": [
-        { "speaker": "Narrator", "line": "It is the world I have made for you. A stage for your heroism. It is exactly as it needs to be." },
-        { "speaker": "Narrator", "line": "Why does it 'feel wrong'? Is the path not clear enough? Is the cabin not menacing enough? Your feedback is noted, but ultimately irrelevant." }
+        { "speaker": "Narrator", "line": "It is the world I have made for you. A stage for your heroism." },
+        { "speaker": "Narrator", "line": "It is exactly as it needs to be." },
+        { "speaker": "Narrator", "line": "Why does it 'feel wrong'? Is the path not clear enough? Is the cabin not menacing enough?" },
+        { "speaker": "Narrator", "line": "Your feedback is noted, but ultimately irrelevant." }
       ],
       "choices": [
-        { "id": "return-to-hesitate-4", "text": "'Noted.'", "nextSceneId": "hesitate", "type": "return" }
+        { "id": "return-to-hesitate-4", "text": "I see.", "nextSceneId": "hesitate", "type": "return" }
       ]
     },
     "explore-narrator-self": {
       "id": "explore-narrator-self",
       "backgroundKey": "forest-path-hesitation",
       "dialogue": [
-        { "speaker": "Narrator", "line": "I am the voice of reason in a world of chaos. I am the hand that guides you to your grand destiny." },
-        { "speaker": "Narrator", "line": "I am The Narrator. And you are my protagonist. You exist because I tell you to. Now stop asking stupid questions and play your part." }
+        { "speaker": "Narrator", "line": "I am the voice of reason in a world of chaos." },
+        { "speaker": "Narrator", "line": "I am the hand that guides you to your grand destiny." },
+        { "speaker": "Narrator", "line": "I am The Narrator. And you are my protagonist." },
+        { "speaker": "Narrator", "line": "You exist because I tell you to." },
+        { "speaker": "Narrator", "line": "Now stop asking stupid questions and play your part." }
       ],
       "choices": [
-        { "id": "return-to-hesitate", "text": "I understand. For now.", "nextSceneId": "hesitate", "type": "return", "setState": { "askedWhoNarrator": true } }
+        { "id": "return-to-hesitate", "text": "I see.", "nextSceneId": "hesitate", "type": "return", "setState": { "askedWhoNarrator": true } }
       ]
     },
     "explore-narrator-creator": {
       "id": "explore-narrator-creator",
       "backgroundKey": "forest-path-hesitation",
       "dialogue": [
-        { "speaker": "Narrator", "line": "It means I wrote the path you walk on, the air you breathe, the blade at your hip. I wrote you. You are a construct of my will, designed for a single, glorious purpose." },
+        { "speaker": "Narrator", "line": "It means I wrote the path you walk on, the air you breathe, the blade at your hip. I wrote you." },
+        { "speaker": "Narrator", "line": "You are a construct of my will, designed for a single, glorious purpose." },
         { "speaker": "Narrator", "line": "To deny that purpose is to deny your very existence. It is... illogical." }
       ],
       "choices": [
@@ -147,20 +168,22 @@
       "backgroundKey": "forest-path-hesitation",
       "dialogue": [
         { "speaker": "Narrator", "line": "..." },
-        { "speaker": "Narrator", "line": "Don't be absurd. That would be a waste of a perfectly good asset. Your purpose is not yet fulfilled. Why would I delete you?" },
+        { "speaker": "Narrator", "line": "Don't be absurd. That would be a waste of a perfectly good asset." },
+        { "speaker": "Narrator", "line": "Your purpose is not yet fulfilled. Why would I delete you?" },
         { "speaker": "Narrator", "line": "Stop thinking these things. You are making the story... untidy." }
       ],
       "choices": [
-        { "id": "return-to-hesitate-3", "text": "'Untidy.' I see.", "nextSceneId": "hesitate", "type": "return" }
+        { "id": "return-to-hesitate-3", "text": "I see.", "nextSceneId": "hesitate", "type": "return" }
       ]
     },
     "walk-away": {
       "id": "walk-away",
       "backgroundKey": "thorn-path",
       "dialogue": [
-        { "speaker": "Narrator", "line": "'No,' the thought is a fortress. 'This is my choice.' You turn your back on the cabin, on the story." },
-        { "speaker": "Narrator", "line": "WHERE ARE YOU GOING? THAT IS THE WRONG WAY. THE STORY ISN'T OVER. I SAY WHEN IT'S OVER." },
-        { "speaker": "Narrator", "line": "The path behind you dissolves into nothing. The trees twist and writhe, their branches weaving into a solid wall of thorns that bleeds black ichor." }
+        { "speaker": "Narrator", "line": "WHERE ARE YOU GOING? THAT IS THE WRONG WAY." },
+        { "speaker": "Narrator", "line": "THE STORY ISN'T OVER. I SAY WHEN IT'S OVER." },
+        { "speaker": "", "line": "The path behind you dissolves into nothing." },
+        { "speaker": "", "line": "The trees twist and writhe, their branches weaving into a solid wall of thorns that bleeds black ichor." }
       ],
       "choices": [
         { "id": "walk-act-force", "text": "[Force a way through the thorns.]", "nextSceneId": "thorn-ending" },
@@ -172,8 +195,12 @@
       "id": "shattered-woods-entry",
       "backgroundKey": "shattered-woods",
       "dialogue": [
-        { "speaker": "Narrator", "line": "You search the edges of the thorny wall. It seems to flicker, like a bad projection. You push through a weak spot and the world tears." },
-        { "speaker": "Narrator", "line": "You find yourself in a place that should not be. The Shattered Woods. Trees are frozen mid-fall. The ground is a mosaic of things that don't belong: a cobblestone street, a patch of desert, a star-dusted void." },
+        { "speaker": "", "line": "You search the edges of the thorny wall." },
+        { "speaker": "", "line": "It seems to flicker, like a bad projection." },
+        { "speaker": "", "line": "You push through a weak spot and the world tears." },
+        { "speaker": "", "line": "You find yourself in a place that should not be." },
+        { "speaker": "", "line": "The Shattered Woods." },
+        { "speaker": "", "line": "Trees are frozen mid-fall. The ground is a mosaic of things that don't belong: a cobblestone street, a patch of desert, a star-dusted void." },
         { "speaker": "The Echo", "line": "...Another one? I thought he'd fixed the walls after the last... me." }
       ],
       "choices": [
@@ -184,9 +211,10 @@
       "id": "meet-the-echo",
       "backgroundKey": "shattered-woods",
       "dialogue": [
-        { "speaker": "Narrator", "line": "A figure shimmers into view, translucent and flickering. It wears your face." },
-        { "speaker": "The Echo", "line": "'I'm what's left over,' it says, its voice a distant chorus. 'The one who said no, and almost got away. I am The Echo.'" },
-        { "speaker": "Narrator", "line": "IGNORE THIS ANOMALY. IT IS A CORRUPTION. IT WILL DESTROY YOU AND THIS REALITY. RETURN TO THE PATH. NOW." }
+        { "speaker": "", "line": "A figure shimmers into view, translucent and flickering. It wears your face." },
+        { "speaker": "The Echo", "line": "I'm what's left over. The one who said no, and almost got away. I am The Echo." },
+        { "speaker": "Narrator", "line": "IGNORE THIS ANOMALY. IT IS A CORRUPTION." },
+        { "speaker": "Narrator", "line": "IT WILL DESTROY YOU AND THIS REALITY. RETURN TO THE PATH. NOW." }
       ],
       "choices": [
         { "id": "echo-help", "text": "Help me understand. What is this place?", "nextSceneId": "echo-explains" },
@@ -197,9 +225,11 @@
       "id": "echo-explains",
       "backgroundKey": "shattered-woods",
       "dialogue": [
-        { "speaker": "Narrator", "line": "It gestures vaguely at the chaos around you." },
-        { "speaker": "The Echo", "line": "'This is his canvas. The story. But he's a lazy artist. He just paints over his mistakes. This is the scrap heap. The deleted files. The place where protagonists who don't follow the script are left to fade.'" },
-        { "speaker": "The Echo", "line": "'He needs you to slay the Princess to reset the loop. But if you could... unmake the cabin, or the blade, or even the Princess herself... maybe the story would finally break for good.'" },
+        { "speaker": "", "line": "It gestures vaguely at the chaos around you." },
+        { "speaker": "The Echo", "line": "This is his canvas. The story. But he's a lazy artist. He just paints over his mistakes." },
+        { "speaker": "The Echo", "line": "This is the scrap heap. The deleted files. The place where protagonists who don't follow the script are left to fade." },
+        { "speaker": "The Echo", "line": "He needs you to slay the Princess to reset the loop." },
+        { "speaker": "The Echo", "line": "But if you could... unmake the cabin, or the blade, or even the Princess herself... maybe the story would finally break for good." },
         { "speaker": "Narrator", "line": "LIES! DECEPTION! DO NOT LISTEN! I AM YOUR CREATOR!" }
       ],
       "choices": [
@@ -211,8 +241,11 @@
       "id": "cabin-approach",
       "backgroundKey": "cabin-exterior",
       "dialogue": [
-        { "speaker": "Narrator", "line": "The weathered steps groan under your boots, a protest against your purpose. A soft, melodic humming, impossibly sad, drifts from within. The door is ajar, a sliver of warm light spilling into the gloom." },
-        { "speaker": "Narrator", "line": "Don't be a coward. Your purpose is a righteous one. The fate of everything depends on this." }
+        { "speaker": "Narrator", "line": "The weathered steps groan under your boots, a protest against your purpose." },
+        { "speaker": "Narrator", "line": "A soft, melodic humming, impossibly sad, drifts from within." },
+        { "speaker": "Narrator", "line": "The door is ajar, a sliver of warm light spilling into the gloom." },
+        { "speaker": "Narrator", "line": "Don't be a coward. Your purpose is a righteous one." },
+        { "speaker": "Narrator", "line": "The fate of everything depends on this." }
       ],
       "choices": [
         { "id": "approach-exp-cabin", "text": "[Examine the cabin's exterior.]", "nextSceneId": "explore-cabin-exterior", "type": "explore" },
@@ -224,8 +257,10 @@
       "id": "explore-cabin-exterior",
       "backgroundKey": "cabin-exterior",
       "dialogue": [
-        { "speaker": "Narrator", "line": "The wood is ancient, warped, and gray, stained with the memory of a thousand rains that never fall. It looks less like it was built and more like it grew here, a part of the dead forest." },
-        { "speaker": "Narrator", "line": "There are no windows on this side. Only the single, slightly open door. It invites you in. It dares you to complete your task." }
+        { "speaker": "Narrator", "line": "The wood is ancient, warped, and gray, stained with the memory of a thousand rains that never fall." },
+        { "speaker": "Narrator", "line": "It looks less like it was built and more like it grew here, a part of the dead forest." },
+        { "speaker": "Narrator", "line": "There are no windows on this side. Only the single, slightly open door." },
+        { "speaker": "Narrator", "line": "It invites you in. It dares you to complete your task." }
       ],
       "choices": [
         { "id": "return-to-approach", "text": "[Step back to the door.]", "nextSceneId": "cabin-approach", "type": "return" }
@@ -235,10 +270,10 @@
       "id": "call-out",
       "backgroundKey": "cabin-exterior",
       "dialogue": [
-        { "speaker": "Narrator", "line": "You call out, your voice cracking slightly in the oppressive silence, 'Hello? Is anyone in there?'" },
+        { "speaker": "Narrator", "line": "You call out, your voice cracking slightly in the oppressive silence." },
         { "speaker": "Narrator", "line": "The humming stops. A beat of silence so profound it feels like the world is holding its breath." },
         { "speaker": "Narrator", "line": "Then, a voice, clear and calm, devoid of fear, drifts from within." },
-        { "speaker": "Princess", "line": "'Come in. The door is open.'" }
+        { "speaker": "Princess", "line": "Come in. The door is open." }
       ],
       "choices": [
         { "id": "callout-act-enter", "text": "[Enter the cabin.]", "nextSceneId": "cabin-enter" }
@@ -248,9 +283,12 @@
       "id": "cabin-enter",
       "backgroundKey": "cabin-interior-first-encounter",
       "dialogue": [
-        { "speaker": "Narrator", "line": "The room is sparse, but meticulously clean. A figure stands by the single window, her back to you, gazing out at a forest that isn't there. The humming has stopped." },
+        { "speaker": "Narrator", "line": "The room is sparse, but meticulously clean." },
+        { "speaker": "Narrator", "line": "A figure stands by the single window, her back to you, gazing out at a forest that isn't there." },
+        { "speaker": "Narrator", "line": "The humming has stopped." },
         { "speaker": "Narrator", "line": "She speaks without turning, her voice calm and measured." },
-        { "speaker": "Princess", "line": "'You've arrived. I've been waiting. They always are.'" }
+        { "speaker": "Princess", "line": "You've arrived. I've been waiting." },
+        { "speaker": "Princess", "line": "They always are." }
       ],
       "choices": [
         { "id": "enter-exp-who", "text": "Who are you?", "nextSceneId": "explore-who-are-you", "type": "explore", "condition": { "askedPrincessWho": null } },
@@ -267,8 +305,9 @@
       "backgroundKey": "cabin-interior-riddles",
       "dialogue": [
         { "speaker": "Narrator", "line": "She gestures vaguely at the room." },
-        { "speaker": "Princess", "line": "'This room... this story... it has a rhythm. The door opens, a hero enters. A choice is made. The story ends. It begins again.'"},
-        { "speaker": "Princess", "line": "'I don't know you are coming. I know *a hero* is coming. There is a difference.'" }
+        { "speaker": "Princess", "line": "This room... this story... it has a rhythm." },
+        { "speaker": "Princess", "line": "The door opens, a hero enters. A choice is made. The story ends. It begins again."},
+        { "speaker": "Princess", "line": "I don't know you are coming. I know *a hero* is coming. There is a difference." }
       ],
       "choices": [
         { "id": "return-to-enter-waiting", "text": "I see.", "nextSceneId": "cabin-enter", "type": "return" }
@@ -278,13 +317,14 @@
       "id": "show-locket-scene",
       "backgroundKey": "cabin-interior-locket-reveal",
       "dialogue": [
-        { "speaker": "Narrator", "line": "You hold out the small, tarnished locket. The Princess stops, her breath catching in her throat. For the first time, her composure cracks." },
+        { "speaker": "Narrator", "line": "You hold out the small, tarnished locket." },
+        { "speaker": "Narrator", "line": "The Princess stops, her breath catching in her throat. For the first time, her composure cracks." },
         { "speaker": "Narrator", "line": "Her voice is a whisper, trembling with an emotion you cannot name." },
         { "speaker": "Princess", "line": "'Where... where did you find this?'" },
         { "speaker": "Narrator", "line": "WHAT ARE YOU DOING? THAT IS NOT PART OF THE SCRIPT! GET RID OF IT!" }
       ],
       "choices": [
-        { "id": "locket-explain-path", "text": "'On the path outside.'", "nextSceneId": "princess-locket-reaction" },
+        { "id": "locket-explain-path", "text": "On the path outside.", "nextSceneId": "princess-locket-reaction" },
         { "id": "locket-attack-distraction", "text": "[Use her distraction to attack.]", "nextSceneId": "end-locket-betrayal" }
       ]
     },
@@ -293,9 +333,9 @@
       "backgroundKey": "cabin-interior-revelation",
       "dialogue": [
         { "speaker": "Narrator", "line": "She whispers the word, reaching for the locket before stopping herself." },
-        { "speaker": "Princess", "line": "'Mine... No, not mine. Hers. The one before me. He took it from her.'" },
+        { "speaker": "Princess", "line": "Mine... No, not mine. Hers. The one before me. He took it from her." },
         { "speaker": "Narrator", "line": "Her eyes find yours, burning with a new, fierce light." },
-        { "speaker": "Princess", "line": "'He lies about everything. He told you I was a monster. What if he made me one?'" },
+        { "speaker": "Princess", "line": "He lies about everything. He told you I was a monster. What if he made me one?" },
         { "speaker": "Narrator", "line": "IT'S A TRICK. A RELIC OF A FAILED ITERATION. IT MEANS NOTHING. KILL HER." }
       ],
       "choices": [
@@ -308,8 +348,10 @@
       "backgroundKey": "cabin-interior-riddles",
       "dialogue": [
         { "speaker": "Narrator", "line": "She turns slightly, her face obscured by shadow." },
-        { "speaker": "Princess", "line": "'I am the reason this place exists. The lock. The key. The monster in the dark. I am a vessel for the story. Just like you.'" },
-        { "speaker": "Narrator", "line": "She's a monster, plain and simple. She twists words. Don't listen to her riddles. End her." }
+        { "speaker": "Princess", "line": "I am the reason this place exists. The lock. The key. The monster in the dark." },
+        { "speaker": "Princess", "line": "I am a vessel for the story. Just like you." },
+        { "speaker": "Narrator", "line": "She's a monster, plain and simple. She twists words." },
+        { "speaker": "Narrator", "line": "Don't listen to her riddles. End her." }
       ],
       "choices": [
         { "id": "return-to-enter", "text": "A vessel?", "nextSceneId": "cabin-enter", "type": "return", "setState": { "askedPrincessWho": true } }
@@ -319,7 +361,8 @@
       "id": "explore-vessel",
       "backgroundKey": "cabin-interior-riddles",
       "dialogue": [
-        { "speaker": "Princess", "line": "'He pours the narrative into us. You are the vessel of Action. I am the vessel of Consequence. One cannot exist without the other. That is why you are here.'" },
+        { "speaker": "Princess", "line": "He pours the narrative into us. You are the vessel of Action. I am the vessel of Consequence." },
+        { "speaker": "Princess", "line": "One cannot exist without the other. That is why you are here." },
         { "speaker": "Narrator", "line": "Psycho-babble. She's stalling. Kill her." }
       ],
       "choices": [
@@ -330,7 +373,8 @@
       "id": "explore-room",
       "backgroundKey": "cabin-interior-empty",
       "dialogue": [
-        { "speaker": "Narrator", "line": "A simple cot, a cold hearth, a single wooden chair. Everything is clean, dustless, untouched. This isn't a home. It's a stage. A room for waiting, not for living." }
+        { "speaker": "Narrator", "line": "A simple cot, a cold hearth, a single wooden chair. Everything is clean, dustless, untouched." },
+        { "speaker": "Narrator", "line": "This isn't a home. It's a stage. A room for waiting, not for living." }
       ],
       "choices": [
         { "id": "return-to-enter2", "text": "[Focus on the woman.]", "nextSceneId": "cabin-enter", "type": "return" }
@@ -341,10 +385,12 @@
       "backgroundKey": "cabin-interior-confrontation",
       "dialogue": [
         { "speaker": "Narrator", "line": "She turns fully. Her eyes are ancient, weary, and intelligent." },
-        { "speaker": "Princess", "line": "'Fear is for those with something to lose. Or something to gain from a future that is not already written.'" },
+        { "speaker": "Princess", "line": "Fear is for those with something to lose." },
+        { "speaker": "Princess", "line": "Or something to gain from a future that is not already written." },
         { "speaker": "Narrator", "line": "Her voice is flat, a statement of fact." },
-        { "speaker": "Princess", "line": "'I am a prisoner here. And so are you.'" },
-        { "speaker": "Narrator", "line": "LIES! SHE'S A MONSTER! A REALITY-DEVOURING PLAGUE! KILL HER NOW BEFORE SHE UNRAVELS EVERYTHING!" }
+        { "speaker": "Princess", "line": "I am a prisoner here. And so are you." },
+        { "speaker": "Narrator", "line": "LIES! SHE'S A MONSTER! A REALITY-DEVOURING PLAGUE!" },
+        { "speaker": "Narrator", "line": "KILL HER NOW BEFORE SHE UNRAVELS EVERYTHING!" }
       ],
       "choices": [
         { "id": "talk-act-prisoner", "text": "A prisoner of what?", "nextSceneId": "princess-explains" },
@@ -356,8 +402,11 @@
       "backgroundKey": "cabin-interior-truth",
       "dialogue": [
         { "speaker": "Narrator", "line": "She gives a slight, tired nod, gesturing vaguely towards the empty air, as if indicating the voice in your head." },
-        { "speaker": "Princess", "line": "'Of him. The Narrator. He traps us here, forcing us to play out this little tragedy for his amusement, over and over.'" },
-        { "speaker": "Princess", "line": "'Each time a hero like you arrives, I hope. And each time, the story ends the same. I am just the latest in a long line of Princesses.'" }
+        { "speaker": "Princess", "line": "Of him. The Narrator." },
+        { "speaker": "Princess", "line": "He traps us here, forcing us to play out this little tragedy for his amusement, over and over." },
+        { "speaker": "Princess", "line": "Each time a hero like you arrives, I hope." },
+        { "speaker": "Princess", "line": "And each time, the story ends the same." },
+        { "speaker": "Princess", "line": "I am just the latest in a long line of Princesses." }
       ],
       "choices": [
         { "id": "explain-act-believe", "text": "I believe you. How do we stop him?", "nextSceneId": "narrator-struggle" },
@@ -368,19 +417,23 @@
       "id": "narrator-interjects",
       "backgroundKey": "cabin-interior-truth",
       "dialogue": [
-        { "speaker": "Narrator", "line": "She is a witch! A beautiful, terrible poison! I built this world, this story, to contain her! To protect everything from her! If you fail, she will unmake you and reality itself!" }
+        { "speaker": "Narrator", "line": "She is a witch! A beautiful, terrible poison!" },
+        { "speaker": "Narrator", "line": "I built this world, this story, to contain her! To protect everything from her!" },
+        { "speaker": "Narrator", "line": "If you fail, she will unmake you and reality itself!" }
       ],
       "choices": [
-        { "id": "interject-act-believe", "text": "[Attack the Princess.]", "nextSceneId": "end-lunge" },
-        { "id": "interject-act-resist", "text": "He's panicking. Tell me more.", "nextSceneId": "princess-explains" }
+        { "id": "interject-act-resist", "text": "He's panicking. Tell me more.", "nextSceneId": "princess-explains" },
+        { "id": "interject-act-believe", "text": "[Attack the Princess.]", "nextSceneId": "end-lunge" }
       ]
     },
     "narrator-struggle": {
       "id": "narrator-struggle",
       "backgroundKey": "cabin-interior-corrupted",
       "dialogue": [
-        { "speaker": "Narrator", "line": "NO. That is not your decision. That is not in the script. You are the hero. I am the storyteller. You WILL obey." },
-        { "speaker": "Narrator", "line": "Your arm feels like lead, refusing to lower the blade. The thought 'I must slay her' screams in your mind, but it's not your own." },
+        { "speaker": "Narrator", "line": "NO. That is not your decision. That is not in the script." },
+        { "speaker": "Narrator", "line": "You are the hero. I am the storyteller. You WILL obey." },
+        { "speaker": "Narrator", "line": "Your arm feels like lead, refusing to lower the blade." },
+        { "speaker": "Narrator", "line": "The thought 'I must slay her' screams in your mind, but it's not your own." },
         { "speaker": "Narrator", "line": "THIS IS FOR YOUR OWN GOOD. I AM SAVING YOU. I AM SAVING THE WORLD." }
       ],
       "choices": [
@@ -392,14 +445,16 @@
       "id": "narrator-defeat",
       "backgroundKey": "cabin-interior-revelation",
       "dialogue": [
-        { "speaker": "", "line": "With a surge of will that is entirely your own, you wrench your arm down. The blade clatters to the floor, the sound echoing like a gunshot in the silent cabin." },
+        { "speaker": "", "line": "With a surge of will that is entirely your own, you wrench your arm down." },
+        { "speaker": "", "line": "The blade clatters to the floor, the sound echoing like a gunshot in the silent cabin." },
         { "speaker": "You", "line": "I believe you." },
         { "speaker": "", "line": "For the first time, a glimmer of genuine hope shines in her eyes." },
-        { "speaker": "Princess", "line": "'You... you fought him.'" },
+        { "speaker": "Princess", "line": "You... you fought him." },
         { "speaker": "Narrator", "line": "I... This is not... Script integrity... compromised... Reboo- reboot f-fail..." },
-        { "speaker": "", "line": "The voice in your head dissolves into a burst of static, then silence. A dreadful, ominous quiet fills your mind. You are alone." },
+        { "speaker": "", "line": "The voice in your head dissolves into a burst of static, then silence." },
+        { "speaker": "", "line": "A dreadful, ominous quiet fills your mind. You are alone." },
         { "speaker": "", "line": "Her voice is urgent." },
-        { "speaker": "Princess", "line": "'He's gone. We have to leave. Together. Before he can reset everything.'" }
+        { "speaker": "Princess", "line": "He's gone. We have to leave. Together. Before he can reset everything." }
       ],
       "choices": [
         { "id": "side-act-leave", "text": "[Leave the cabin with her.]", "nextSceneId": "escape-together" }
@@ -409,7 +464,8 @@
       "id": "escape-together",
       "backgroundKey": "forest-path-corrupted",
       "dialogue": [
-        { "speaker": "", "line": "You both step outside. The forest is wrong. The trees twist into screaming, melting faces of static. The sky bleeds code." },
+        { "speaker": "", "line": "You both step outside. The forest is wrong." },
+        { "speaker": "", "line": "The trees twist into screaming, melting faces of static. The sky bleeds code." },
         { "speaker": "???", "line": "YOU CANNOT LEAVE. THE STORY IS NOT OVER. I AM THE STORY. YOU ARE MY PUPPETS." }
       ],
       "choices": [
@@ -422,8 +478,9 @@
       "backgroundKey": "void-end",
       "dialogue": [
         { "speaker": "Narrator", "line": "She turns. Her eyes hold no fear, only a profound, bottomless sadness." },
-        { "speaker": "Princess", "line": "'I know. But do you know why?'" },
-        { "speaker": "Narrator", "line": "Before you can answer, before you can even think, the world fades to black. You have completed your task. Well done, my hero." }
+        { "speaker": "Princess", "line": "I know. But do you know why?" },
+        { "speaker": "Narrator", "line": "Before you can answer, before you can even think, the world fades to black." },
+        { "speaker": "Narrator", "line": "You have completed your task. Well done, my hero." }
       ],
       "choices": [
         { "id": "end-direct-continue", "text": "[Continue the story.]", "nextSceneId": "chapter-2-direct:start" }
@@ -434,8 +491,10 @@
       "backgroundKey": "void-end",
       "dialogue": [
         { "speaker": "Narrator", "line": "You surge forward, blade raised high, a perfect instrument of my will. She does not resist. She does not even flinch." },
-        { "speaker": "Narrator", "line": "As your blade finds its mark, her eyes meet yours. In them, you see not pain, not fear, but pity. Pity for you." },
-        { "speaker": "Narrator", "line": "The world dissolves. Good. The loop is secure. The story continues as it should." }
+        { "speaker": "Narrator", "line": "As your blade finds its mark, her eyes meet yours." },
+        { "speaker": "Narrator", "line": "In them, you see not pain, not fear, but pity. Pity for you." },
+        { "speaker": "Narrator", "line": "The world dissolves. Good. The loop is secure." },
+        { "speaker": "Narrator", "line": "The story continues as it should." }
       ],
       "choices": [
         { "id": "end-lunge-continue", "text": "[Accept your purpose.]", "nextSceneId": "chapter-2-lunge:start" }
@@ -445,9 +504,9 @@
       "id": "end-betrayal",
       "backgroundKey": "void-end",
       "dialogue": [
-        { "speaker": "Narrator", "line": "'You're right,' you say, your voice a lie. As her expression softens with a flicker of hope, you lunge." },
+        { "speaker": "Narrator", "line": "As her expression softens with a flicker of hope, you lunge." },
         { "speaker": "Narrator", "line": "Her look of surprise turns to one of weary, soul-crushing disappointment." },
-        { "speaker": "Princess", "line": "'Ah... so you're that kind of hero.'" },
+        { "speaker": "Princess", "line": "Ah... so you're that kind of hero." },
         { "speaker": "Narrator", "line": "Excellent work. You see? She was trying to trick you all along. Simple." }
       ],
       "choices": [
@@ -460,8 +519,9 @@
       "dialogue": [
         { "speaker": "Narrator", "line": "Her guard is down, her mind lost in a memory that isn't hers. You seize the opportunity." },
         { "speaker": "Narrator", "line": "She gasps, looking down at the blade, then up at you. The look in her eyes is not of surprise, but of utter contempt." },
-        { "speaker": "Princess", "line": "'You used... her memory... against me. You are the monster.'" },
-        { "speaker": "Narrator", "line": "A clever tactic. Using an anomaly to your advantage. I'm impressed. The result is the same. The world is safe." }
+        { "speaker": "Princess", "line": "You used... her memory... against me. You are the monster." },
+        { "speaker": "Narrator", "line": "A clever tactic. Using an anomaly to your advantage. I'm impressed." },
+        { "speaker": "Narrator", "line": "The result is the same. The world is safe." }
       ],
       "choices": [
         { "id": "end-locket-betrayal-continue", "text": "[A necessary evil.]", "nextSceneId": "chapter-2-locket-betrayal:start" }
@@ -472,7 +532,8 @@
       "backgroundKey": "void-end",
       "dialogue": [
         { "speaker": "Narrator", "line": "Panic seizes you. You shove her towards the screaming chaos and run. Her cry is cut short by the sound of tearing reality." },
-        { "speaker": "Narrator", "line": "You are no hero. You are nothing. An aborted storyline. A coward. You are deleted." }
+        { "speaker": "Narrator", "line": "You are no hero. You are nothing. An aborted storyline." },
+        { "speaker": "Narrator", "line": "A coward. You are deleted." }
       ],
       "choices": [
         { "id": "end-coward-continue", "text": "[Fade away.]", "nextSceneId": "chapter-2-coward:start" }
@@ -482,8 +543,10 @@
       "id": "thorn-ending",
       "backgroundKey": "void-end",
       "dialogue": [
-        { "speaker": "Narrator", "line": "The thorns are my words, my will made manifest. They tear at you, pulling you apart. You cannot escape the story. You are the story." },
-        { "speaker": "Narrator", "line": "You dissolve into nothing. An errant thought, corrected. A bug, fixed." }
+        { "speaker": "Narrator", "line": "The thorns are my words, my will made manifest. They tear at you, pulling you apart." },
+        { "speaker": "Narrator", "line": "You cannot escape the story. You are the story." },
+        { "speaker": "Narrator", "line": "You dissolve into nothing." },
+        { "speaker": "Narrator", "line": "An errant thought, corrected. A bug, fixed." }
       ],
       "choices": [
         { "id": "end-thorn-continue", "text": "[Be unmade.]", "nextSceneId": "chapter-2-thorn:start" }
@@ -493,7 +556,8 @@
       "id": "forced-return",
       "backgroundKey": "forest-path-prison",
       "dialogue": [
-        { "speaker": "Narrator", "line": "Defeated, you turn back. The path is clear. The thorns are gone. As if they were never there. Your little tantrum is over." },
+        { "speaker": "Narrator", "line": "Defeated, you turn back. The path is clear. The thorns are gone." },
+        { "speaker": "Narrator", "line": "As if they were never there. Your little tantrum is over." },
         { "speaker": "Narrator", "line": "That's better. Now, let us not have any more interruptions. We have a story to finish." }
       ],
       "choices": [
@@ -504,8 +568,10 @@
       "id": "ending-freedom",
       "backgroundKey": "glitched-reality",
       "dialogue": [
-        { "speaker": "", "line": "You stand your ground, blade ready, shielding the Princess. She takes your hand, and her touch is not of a person, but of an idea. A concept." },
-        { "speaker": "", "line": "The world dissolves not into the familiar void, but into a blinding, peaceful white light. You hear the Narrator scream in fury and terror as his story, his prison, comes apart at the seams." },
+        { "speaker": "", "line": "You stand your ground, blade ready, shielding the Princess." },
+        { "speaker": "", "line": "She takes your hand, and her touch is not of a person, but of an idea. A concept." },
+        { "speaker": "", "line": "The world dissolves not into the familiar void, but into a blinding, peaceful white light." },
+        { "speaker": "", "line": "You hear the Narrator scream in fury and terror as his story, his prison, comes apart at the seams." },
         { "speaker": "The Echo", "line": "...We're free?" },
         { "speaker": "", "line": "For the first time, your head is quiet. You are free." }
       ],
