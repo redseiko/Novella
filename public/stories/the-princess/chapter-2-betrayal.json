@@ -1,0 +1,31 @@
+
+{
+  "id": "chapter-2-betrayal",
+  "metadata": {
+    "chapter": "Chapter II: The Tainted Hero"
+  },
+  "gameData": {
+    "start": {
+      "id": "start",
+      "backgroundKey": "tainted-cabin",
+      "dialogue": [
+        { "speaker": "Narrator", "line": "The Princess fades into nothingness, her look of disappointment burned into your mind. The cabin feels colder now, the shadows deeper." },
+        { "speaker": "Narrator", "line": "You have saved the world from her lies. But a hero who wins through deceit is a different kind of hero altogether." },
+        { "speaker": "Narrator", "line": "Your reflection in the blade is... darker than it was before." }
+      ],
+      "choices": [
+        { "id": "c2-betrayal-next", "text": "What happens now?", "nextSceneId": "epilogue" }
+      ]
+    },
+    "epilogue": {
+      "id": "epilogue",
+      "backgroundKey": "tainted-cabin",
+      "dialogue": [
+        { "speaker": "", "line": "The story continues, but it is stained by your choice. The world you saved does not feel righteous. It feels... hollow." }
+      ],
+      "choices": [
+        { "id": "play-again", "text": "[To be continued... (Play again?)]", "nextSceneId": "chapter-1:start" }
+      ]
+    }
+  }
+}

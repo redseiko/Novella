@@ -1,32 +1,41 @@
 
 
 import { useState, useCallback, useRef } from 'react';
-import { Scene, Choice } from '../types';
-import { getScene, updateGameState, resetGameState, getGameState } from '../services/gameService';
+import { Scene, Choice, StoryChapter, DialogueLine } from '../types';
+import { getScene, updateGameState, resetGameState, getGameState, getActiveChapterData } from '../services/gameService';
 
 export const useGameState = (initialSceneId: string = 'start') => {
     const [currentScene, setCurrentScene] = useState<Scene | null>(null);
-    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [dialogueForDisplay, setDialogueForDisplay] = useState<DialogueLine[]>([]);
+    const [isLoading, setIsLoading] = useState<boolean>(true);
     const [isChoosing, setIsChoosing] = useState<boolean>(false);
     const [exploredChoices, setExploredChoices] = useState(new Set<string>());
     const [previousSceneChoices, setPreviousSceneChoices] = useState<Choice[] | null>(null);
     const [currentGameState, setCurrentGameState] = useState<Record<string, any>>({});
+    const [currentChapter, setCurrentChapter] = useState<StoryChapter | null>(null);
+    const [isReturning, setIsReturning] = useState(false);
 
     // Create refs to hold the latest state values for use in stable callbacks
     const isLoadingRef = useRef(isLoading);
     isLoadingRef.current = isLoading;
     const currentSceneRef = useRef(currentScene);
     currentSceneRef.current = currentScene;
-    const previousSceneChoicesRef = useRef(previousSceneChoices);
-    previousSceneChoicesRef.current = previousSceneChoices;
 
-    const loadScene = useCallback(async (sceneId: string) => {
+    const loadScene = useCallback(async (sceneId: string, options?: { isReturning?: boolean }) => {
         setIsLoading(true);
-        setIsChoosing(false);
+        setIsReturning(!!options?.isReturning);
+        setIsChoosing(false); // Always hide choices during any scene transition
 
         try {
             const scene = await getScene(sceneId);
             setCurrentScene(scene);
+            setCurrentChapter(getActiveChapterData());
+
+            if (!options?.isReturning) {
+                // Only update the dialogue to be displayed for brand new scenes.
+                // On a return, this is skipped, preserving the old dialogue text.
+                setDialogueForDisplay(scene.dialogue);
+            }
         } catch (error) {
             console.error(`Failed to load scene "${sceneId}":`, error);
             // Optional: Set an error state to display a message to the user
@@ -39,9 +48,11 @@ export const useGameState = (initialSceneId: string = 'start') => {
         resetGameState();
         setCurrentGameState({});
         setCurrentScene(null);
+        setDialogueForDisplay([]);
+        setCurrentChapter(null);
         setExploredChoices(new Set<string>());
         setPreviousSceneChoices(null);
-        setIsLoading(false);
+        setIsLoading(true);
         setIsChoosing(false);
     }, []);
 
@@ -58,13 +69,7 @@ export const useGameState = (initialSceneId: string = 'start') => {
             setExploredChoices(prev => new Set(prev).add(choice.id));
             loadScene(choice.nextSceneId);
         } else if (choice.type === 'return') {
-            if (previousSceneChoicesRef.current) {
-                setCurrentScene(prev => prev ? { ...prev, choices: previousSceneChoicesRef.current! } : null);
-                setPreviousSceneChoices(null);
-                setIsChoosing(true);
-            } else {
-                loadScene(choice.nextSceneId);
-            }
+            loadScene(choice.nextSceneId, { isReturning: true });
         } else { // 'action' type or undefined
             setExploredChoices(new Set());
             setPreviousSceneChoices(null);
@@ -77,27 +82,27 @@ export const useGameState = (initialSceneId: string = 'start') => {
             return;
         }
 
-        const scene = currentSceneRef.current;
-        if (scene.choices.length === 1 && scene.choices[0].type === 'return') {
-            handleChoiceSelect(scene.choices[0]);
-        } else {
-            setIsChoosing(true);
-        }
-    }, [handleChoiceSelect]);
+        // This callback is triggered by DialogBox either after typing is finished,
+        // or immediately on a 'return' transition.
+        setIsChoosing(true);
+    }, []);
     
-    // Function to kick off the game. This is now stable and won't cause effect loops.
+    // Function to kick off the game.
     const startGame = useCallback(() => {
-        if (isLoadingRef.current) return;
+        restartGame();
         setCurrentGameState(getGameState());
         loadScene(initialSceneId);
-    }, [loadScene, initialSceneId]);
+    }, [loadScene, initialSceneId, restartGame]);
 
     return {
         currentScene,
+        dialogueForDisplay,
         isLoading,
         isChoosing,
+        isReturning,
         exploredChoices,
         currentGameState,
+        currentChapter,
         handleChoiceSelect,
         handleTypingComplete,
         restartGame,

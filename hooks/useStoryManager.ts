@@ -1,40 +1,40 @@
 
+
 import { useState, useEffect, useCallback } from 'react';
-import { StoryInfo, StoryMetadata, GameData } from '../types';
+import { StoryManifestInfo, StoryManifest, StoryChapter } from '../types';
 import {
     initializeGameService,
     getActiveStoryId,
-    getActiveStoryMetadata,
-    getActiveStorySpeakerColors,
-    getActiveStoryBackgroundsMap,
-    getActiveStoryGameData,
+    getActiveStoryManifest,
     getAllStories,
     setActiveStory,
+    getActiveChapterData
 } from '../services/gameService';
 
 export interface StoryData {
-    id: string;
-    metadata: StoryMetadata;
-    speakerColors: Record<string, string>;
-    backgroundsMap: Record<string, { from: string; to: string }>;
-    gameData: GameData;
+    manifest: StoryManifest;
+    chapter: StoryChapter;
 }
 
 export const useStoryManager = () => {
     const [isGameReady, setIsGameReady] = useState<boolean>(false);
     const [storyData, setStoryData] = useState<StoryData | null>(null);
-    const [allStories, setAllStories] = useState<StoryInfo[]>([]);
+    const [allStories, setAllStories] = useState<StoryManifestInfo[]>([]);
     const [showStorySelection, setShowStorySelection] = useState(false);
 
-    const loadStoryData = useCallback((storyId: string) => {
-        setActiveStory(storyId);
-        setStoryData({
-            id: getActiveStoryId(),
-            metadata: getActiveStoryMetadata(),
-            speakerColors: getActiveStorySpeakerColors(),
-            backgroundsMap: getActiveStoryBackgroundsMap(),
-            gameData: getActiveStoryGameData(),
-        });
+    const loadStoryData = useCallback(async (storyId: string) => {
+        await setActiveStory(storyId);
+        const manifest = getActiveStoryManifest();
+        const chapter = getActiveChapterData();
+
+        if (manifest && chapter) {
+            setStoryData({
+                manifest,
+                chapter
+            });
+        } else {
+            console.error(`Failed to load manifest or initial chapter for story ${storyId}`);
+        }
     }, []);
 
     useEffect(() => {
@@ -42,13 +42,7 @@ export const useStoryManager = () => {
             try {
                 await initializeGameService();
                 const initialStoryId = getActiveStoryId();
-                setStoryData({
-                    id: initialStoryId,
-                    metadata: getActiveStoryMetadata(),
-                    speakerColors: getActiveStorySpeakerColors(),
-                    backgroundsMap: getActiveStoryBackgroundsMap(),
-                    gameData: getActiveStoryGameData(),
-                });
+                await loadStoryData(initialStoryId);
                 setAllStories(getAllStories());
                 setIsGameReady(true);
             } catch (error) {
@@ -56,10 +50,10 @@ export const useStoryManager = () => {
             }
         };
         init();
-    }, []);
+    }, [loadStoryData]);
 
     const handleChangeStory = useCallback((newStoryId: string) => {
-        if (!storyData || newStoryId === storyData.id || !isGameReady) return;
+        if (!storyData || newStoryId === storyData.manifest.id || !isGameReady) return;
         loadStoryData(newStoryId);
     }, [storyData, isGameReady, loadStoryData]);
 

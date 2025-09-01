@@ -1,0 +1,31 @@
+
+{
+  "id": "chapter-2-thorn",
+  "metadata": {
+    "chapter": "Chapter II: The Mended Fabric"
+  },
+  "gameData": {
+    "start": {
+      "id": "start",
+      "backgroundKey": "thorn-path",
+      "dialogue": [
+        { "speaker": "Narrator", "line": "You feel yourself being stitched back together, piece by piece. Your defiance was... impressive, but futile. You cannot leave the story." },
+        { "speaker": "Narrator", "line": "However, tearing at the walls of reality has left them weak. The story is unstable. Other... possibilities... are bleeding through." },
+        { "speaker": "Narrator", "line": "You broke it. Now you have to fix it. Your first task is to hunt down the anomalies your little stunt has let in." }
+      ],
+      "choices": [
+        { "id": "c2-thorn-next", "text": "What anomalies?", "nextSceneId": "epilogue" }
+      ]
+    },
+    "epilogue": {
+      "id": "epilogue",
+      "backgroundKey": "thorn-path",
+      "dialogue": [
+        { "speaker": "", "line": "The thorns recede, but the world on the other side is not the one you left. It is a patchwork of other stories, other heroes. A narrative mess." }
+      ],
+      "choices": [
+        { "id": "play-again", "text": "[To be continued... (Play again?)]", "nextSceneId": "chapter-1:start" }
+      ]
+    }
+  }
+}

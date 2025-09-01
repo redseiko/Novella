@@ -1,0 +1,34 @@
+
+{
+  "id": "chapter-2-freedom",
+  "metadata": {
+    "chapter": "Chapter II: The World Outside"
+  },
+  "gameData": {
+    "start": {
+      "id": "start",
+      "backgroundKey": "open-fields",
+      "dialogue": [
+        { "speaker": "Princess", "line": "The light fades. The air... it's real. I can feel the wind. I can smell the grass." },
+        { "speaker": "", "line": "You stand on a hill overlooking a vast, sun-drenched field. The sky is a color you've never seen before: a brilliant, piercing blue. The cabin, the forest, the eternal twilight... it's all gone." },
+        { "speaker": "The Echo", "line": "So... this is what he was keeping from us. A world." },
+        { "speaker": "Princess", "line": "She looks at you, her eyes filled not with weariness, but with a vibrant, uncertain hope. 'What do we do now?'" }
+      ],
+      "choices": [
+        { "id": "c2-explore", "text": "We find out what's real, and what isn't.", "nextSceneId": "epilogue" },
+        { "id": "c2-rest", "text": "For now... we rest.", "nextSceneId": "epilogue" }
+      ]
+    },
+    "epilogue": {
+      "id": "epilogue",
+      "backgroundKey": "open-fields",
+      "dialogue": [
+        { "speaker": "", "line": "The story is no longer written for you. A thousand paths stretch out from this hill, each one a choice you are truly free to make." },
+        { "speaker": "", "line": "This is not an ending. It is a beginning." }
+      ],
+      "choices": [
+        { "id": "play-again", "text": "[To be continued... (Play again?)]", "nextSceneId": "chapter-1:start" }
+      ]
+    }
+  }
+}

@@ -1,14 +1,15 @@
+
 export interface Choice {
   id: string;
   text: string;
-  nextSceneId: string;
+  nextSceneId: string; // Can be "sceneId" or "chapterId:sceneId"
   type?: 'action' | 'explore' | 'return';
   setState?: Record<string, any>;
   condition?: Record<string, any>;
 }
 
 export interface DialogueLine {
-  speaker: 'Narrator' | 'You' | 'Princess' | '???' | '' | 'Consciousness' | 'The Archivist' | 'The Skeptic' | 'The Oracle' | 'The Echo';
+  speaker: string;
   line: string;
   condition?: Record<string, any>;
 }
@@ -24,7 +25,10 @@ export type GameData = Record<string, Scene>;
 
 export interface StoryMetadata {
   title: string;
-  chapter: string;
+}
+
+export interface ChapterMetadata {
+    chapter: string;
 }
 
 interface BackgroundColor {
@@ -32,15 +36,22 @@ interface BackgroundColor {
     to: string;
 }
 
-export interface Story {
+export interface StoryChapter {
+    id: string;
+    metadata: ChapterMetadata;
+    gameData: GameData;
+}
+
+export interface StoryManifest {
   id: string;
   metadata: StoryMetadata;
   speakerColors: Record<string, string>;
-  gameData: GameData;
   backgroundsMap: Record<string, BackgroundColor>;
+  entryChapter: string;
+  chapters: Record<string, string>; // chapterId -> path
 }
 
-export interface StoryInfo {
+export interface StoryManifestInfo {
     id: string;
     metadata: StoryMetadata;
 }

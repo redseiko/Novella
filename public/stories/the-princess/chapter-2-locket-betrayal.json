@@ -1,0 +1,31 @@
+
+{
+  "id": "chapter-2-locket-betrayal",
+  "metadata": {
+    "chapter": "Chapter II: The Stained Locket"
+  },
+  "gameData": {
+    "start": {
+      "id": "start",
+      "backgroundKey": "tainted-cabin",
+      "dialogue": [
+        { "speaker": "Narrator", "line": "The world reforms, but the locket in your hand is now ice-cold. A beautiful memory, twisted into a weapon. How wonderfully pragmatic." },
+        { "speaker": "Narrator", "line": "You have proven you will do whatever it takes to fulfill your purpose. A valuable, if distasteful, quality." },
+        { "speaker": "Narrator", "line": "But such actions have consequences. The story is saved, but its foundations are now built on a corrupted truth. Things may not grow straight in this new world." }
+      ],
+      "choices": [
+        { "id": "c2-locket-next", "text": "I did what I had to do.", "nextSceneId": "epilogue" }
+      ]
+    },
+    "epilogue": {
+      "id": "epilogue",
+      "backgroundKey": "tainted-cabin",
+      "dialogue": [
+        { "speaker": "", "line": "The memory in the locket is now a silent scream. It is a reminder that even the purest things can be used for dark purposes." }
+      ],
+      "choices": [
+        { "id": "play-again", "text": "[To be continued... (Play again?)]", "nextSceneId": "chapter-1:start" }
+      ]
+    }
+  }
+}

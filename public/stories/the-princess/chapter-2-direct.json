@@ -1,0 +1,31 @@
+
+{
+  "id": "chapter-2-direct",
+  "metadata": {
+    "chapter": "Chapter II: The Hero's Burden"
+  },
+  "gameData": {
+    "start": {
+      "id": "start",
+      "backgroundKey": "perfected-path",
+      "dialogue": [
+        { "speaker": "Narrator", "line": "The world reforms around you. The path is brighter now, the trees less skeletal, more noble. The sky is a hopeful grey." },
+        { "speaker": "Narrator", "line": "You did your duty without question. You saved the world. It is a cleaner, better story now." },
+        { "speaker": "Narrator", "line": "But the absence of the Princess has created a vacuum. A new threat, drawn to the story's void, begins to stir in the woods. Your work is not yet done, hero." }
+      ],
+      "choices": [
+        { "id": "c2-direct-next", "text": "What is it now?", "nextSceneId": "epilogue" }
+      ]
+    },
+    "epilogue": {
+      "id": "epilogue",
+      "backgroundKey": "perfected-path",
+      "dialogue": [
+        { "speaker": "", "line": "A hero's reward is not rest, but the next battle. The story must continue, and you are its unwavering champion." }
+      ],
+      "choices": [
+        { "id": "play-again", "text": "[To be continued... (Play again?)]", "nextSceneId": "chapter-1:start" }
+      ]
+    }
+  }
+}

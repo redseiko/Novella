@@ -1,8 +1,9 @@
+
 import React from 'react';
 
 interface TitleScreenProps {
   title: string;
-  chapter: string;
+  chapter?: string;
 }
 
 const TitleScreen: React.FC<TitleScreenProps> = ({ title, chapter }) => {
@@ -13,9 +14,11 @@ const TitleScreen: React.FC<TitleScreenProps> = ({ title, chapter }) => {
       >
         {title}
       </h1>
-      <h2 className="font-sans text-2xl md:text-3xl text-indigo-300 mt-4 tracking-widest uppercase font-semibold text-outline">
-        {chapter}
-      </h2>
+      {chapter && (
+        <h2 className="font-sans text-2xl md:text-3xl text-indigo-300 mt-4 tracking-widest uppercase font-semibold text-outline">
+            {chapter}
+        </h2>
+      )}
     </div>
   );
 };

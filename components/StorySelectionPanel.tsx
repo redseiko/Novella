@@ -1,8 +1,9 @@
+
 import React from 'react';
-import { StoryInfo } from '../types';
+import { StoryManifestInfo } from '../types';
 
 interface StorySelectionPanelProps {
-  stories: StoryInfo[];
+  stories: StoryManifestInfo[];
   activeStoryId: string;
   onSelect: (storyId: string) => void;
   onClose: () => void;
@@ -42,7 +43,7 @@ const StorySelectionPanel: React.FC<StorySelectionPanelProps> = ({ stories, acti
                         className={`w-full p-4 rounded-md text-left transition-colors font-sans group ${isActive ? 'bg-indigo-800/50 cursor-default' : 'bg-gray-800 hover:bg-gray-700'}`}
                     >
                         <h3 className={`font-bold text-lg ${isActive ? 'text-indigo-200' : 'text-white'}`}>{story.metadata.title}</h3>
-                        <p className={`text-sm ${isActive ? 'text-indigo-300' : 'text-gray-400'}`}>{story.metadata.chapter}</p>
+                        
                     </button>
                 )
             })}

@@ -80,5 +80,33 @@ All choice text must be from the player's first-person perspective. The format d
 - **Princess**: Her dialogue is often cryptic, intelligent, and calm, even in the face of danger. She hints at a deeper understanding of her reality.
 - **Player Character ("You")**: The player's choices are their dialogue and actions. The text for choices should always be written from the player's first-person perspective, following the formatting rules in Section 3.
 
+## 5. Dialogue and Narration Rules
+
+**This is a critical rule.** The game's narrative relies on the distinction between what a character says and what the biased Narrator *tells* the player is happening.
+
+-   **The Narrator is the ONLY one who describes actions.** Tones of voice, physical gestures, character expressions, and environmental descriptions *must* come from the `Narrator`.
+-   **All other characters ONLY speak.** Their `"line"` property should contain *only* spoken dialogue.
+
+### Good Example:
+
+This is the correct way to structure dialogue and action. The action is narrated, and the character speaks.
+
+```json
+"dialogue": [
+  { "speaker": "Narrator", "line": "She turns to face you, her eyes full of a weary intelligence." },
+  { "speaker": "Princess", "line": "'I am a prisoner here. And so are you.'" }
+]
+```
+
+### Avoid:
+
+This is incorrect. The Princess's line contains descriptive action ("She turns to face you...") that should be narrated separately. This breaks the narrative convention of the game.
+
+```json
+"dialogue": [
+  { "speaker": "Princess", "line": "She turns to face you, her eyes full of weary intelligence, and says, 'I am a prisoner here. And so are you.'" }
+]
+```
+
 ---
 *This document should be updated as the story and game mechanics evolve.*

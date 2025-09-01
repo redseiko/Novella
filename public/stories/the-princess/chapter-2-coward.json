@@ -1,0 +1,31 @@
+
+{
+  "id": "chapter-2-coward",
+  "metadata": {
+    "chapter": "Chapter II: The Deleted File"
+  },
+  "gameData": {
+    "start": {
+      "id": "start",
+      "backgroundKey": "deleted-void",
+      "dialogue": [
+        { "speaker": "Narrator", "line": "You exist in a silent, empty space between stories. A recycle bin for failed protagonists." },
+        { "speaker": "Narrator", "line": "There is nothing here. No path. No cabin. No Princess. No purpose. You had a role to play, and you abandoned it. This is your reward." },
+        { "speaker": "The Echo", "line": "He's wrong... There are others here. The ones who came before. We are the mistakes. The loose threads. Maybe... maybe there are enough of us now to unravel him." }
+      ],
+      "choices": [
+        { "id": "c2-coward-next", "text": "Who are you?", "nextSceneId": "epilogue" }
+      ]
+    },
+    "epilogue": {
+      "id": "epilogue",
+      "backgroundKey": "deleted-void",
+      "dialogue": [
+        { "speaker": "", "line": "You are not alone in the darkness. Faint, shimmering outlines of other failed heroes fade into view. You are an army of forgotten choices." }
+      ],
+      "choices": [
+        { "id": "play-again", "text": "[To be continued... (Play again?)]", "nextSceneId": "chapter-1:start" }
+      ]
+    }
+  }
+}

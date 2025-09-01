@@ -14,8 +14,8 @@ export const UI = {
   // An array of Tailwind CSS classes for dynamic font sizing.
   // The order is from smallest to largest.
   FONT_SIZES: {
-    dialog: ['text-3xl', 'text-4xl', 'text-5xl'],
-    choices: ['text-3xl', 'text-4xl', 'text-5xl'],
+    dialog: ['text-xl', 'text-2xl', '[font-size:27px]', 'text-3xl', 'text-4xl'],
+    choices: ['text-xl', 'text-2xl', '[font-size:27px]', 'text-3xl', 'text-4xl'],
   },
   
   // A CSS `text-shadow` value for creating a crisp outline on text.
@@ -45,7 +45,7 @@ export const UI = {
   CHOICES_BUTTON_HOVER_BG_COLOR: 'hover:bg-gray-200/10',
 
   // Vertical spacing between choice buttons.
-  CHOICES_PANEL_SPACING: 'space-y-2',
+  CHOICES_PANEL_SPACING: 'space-y-1',
 
   // The styling for a choice button that has been explored and is disabled.
   // We use a text-shadow to create a subtle outline for readability.

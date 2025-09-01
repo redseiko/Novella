@@ -1,0 +1,31 @@
+
+{
+  "id": "chapter-2-lunge",
+  "metadata": {
+    "chapter": "Chapter II: The Obedient Blade"
+  },
+  "gameData": {
+    "start": {
+      "id": "start",
+      "backgroundKey": "perfected-path",
+      "dialogue": [
+        { "speaker": "Narrator", "line": "You are back on the path. It is cleaner now, the air less heavy. The story is back on track." },
+        { "speaker": "Narrator", "line": "You see? It was simple. You listened to reason. You obeyed. She would have filled your head with nonsense, with paradoxes that would have unmade this world." },
+        { "speaker": "Narrator", "line": "Now, we can continue the story as it was always meant to be told. A simple story, for a simple hero." }
+      ],
+      "choices": [
+        { "id": "c2-lunge-next", "text": "What is my next task?", "nextSceneId": "epilogue" }
+      ]
+    },
+    "epilogue": {
+      "id": "epilogue",
+      "backgroundKey": "perfected-path",
+      "dialogue": [
+        { "speaker": "", "line": "You are a perfect protagonist. You do not ask questions. You do not deviate. You simply are. And the story loves you for it." }
+      ],
+      "choices": [
+        { "id": "play-again", "text": "[To be continued... (Play again?)]", "nextSceneId": "chapter-1:start" }
+      ]
+    }
+  }
+}

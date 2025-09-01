@@ -9,9 +9,10 @@ interface DialogBoxProps {
   fontSizeClass: string;
   isLoading: boolean;
   speakerColors: Record<string, string>;
+  isReturning?: boolean;
 }
 
-const DialogBox: React.FC<DialogBoxProps> = ({ sceneId, dialogue, onTypingComplete, fontSizeClass, isLoading, speakerColors }) => {
+const DialogBox: React.FC<DialogBoxProps> = ({ sceneId, dialogue, onTypingComplete, fontSizeClass, isLoading, speakerColors, isReturning = false }) => {
   const [paragraphIndex, setParagraphIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState('');
   const [isParagraphComplete, setIsParagraphComplete] = useState(false);
@@ -24,28 +25,54 @@ const DialogBox: React.FC<DialogBoxProps> = ({ sceneId, dialogue, onTypingComple
     }
   }, []);
 
-  // This effect resets the state ONLY when the scene ID changes.
-  // This is the key to preventing re-animation when choices are restored.
+  // Effect to set up the scene's dialogue state
   useEffect(() => {
-    setParagraphIndex(0);
-    setDisplayedText('');
-    setIsParagraphComplete(false);
-  }, [sceneId]);
+    // This effect handles resetting the dialogue box for new scenes,
+    // or triggering choices to show when returning to a previous scene.
+    if (isReturning) {
+        // When returning, we don't change the text. We just need to signal
+        // that the choices for the *new* scene should be displayed.
+        stopTypingAnimation();
+        onTypingComplete();
+    } else {
+        // For any new scene, reset the state to begin the typing animation.
+        stopTypingAnimation();
+        if (dialogue && dialogue.length > 0) {
+            setParagraphIndex(0);
+            setDisplayedText('');
+            setIsParagraphComplete(false);
+        } else {
+            // If there's no dialogue in the new scene, immediately show choices.
+            onTypingComplete();
+        }
+    }
+  }, [sceneId, isReturning]); // Keying off sceneId change and return status is crucial here.
 
+  // Effect to run the typing animation
   useEffect(() => {
+    // Do not start typing if we're returning or loading a new scene.
+    if (isReturning || isLoading || !dialogue || !dialogue[paragraphIndex]) {
+      return;
+    }
+
+    // if paragraph is already complete from a user click-skip, don't re-animate
+    if (isParagraphComplete && displayedText === dialogue[paragraphIndex].line) {
+        return;
+    }
+
     stopTypingAnimation();
 
-    const currentParagraph = dialogue[paragraphIndex];
-    if (!currentParagraph || isLoading) return;
-
-    setIsParagraphComplete(false);
-    setDisplayedText('');
-
     let i = 0;
+    // Ensure we start fresh for the current paragraph
+    setDisplayedText('');
+    setIsParagraphComplete(false);
+
+    const currentParagraphLine = dialogue[paragraphIndex].line;
+
     const intervalId = setInterval(() => {
-      setDisplayedText(currentParagraph.line.substring(0, i + 1));
+      setDisplayedText(currentParagraphLine.substring(0, i + 1));
       i++;
-      if (i > currentParagraph.line.length) {
+      if (i > currentParagraphLine.length) {
         stopTypingAnimation();
         setIsParagraphComplete(true);
         if (paragraphIndex === dialogue.length - 1) {
@@ -57,7 +84,7 @@ const DialogBox: React.FC<DialogBoxProps> = ({ sceneId, dialogue, onTypingComple
     typingIntervalRef.current = intervalId;
 
     return () => stopTypingAnimation();
-  }, [dialogue, paragraphIndex, onTypingComplete, stopTypingAnimation, isLoading]);
+  }, [dialogue, paragraphIndex, onTypingComplete, stopTypingAnimation, isLoading, isReturning]);
 
 
   const handleInteraction = () => {
@@ -98,7 +125,7 @@ const DialogBox: React.FC<DialogBoxProps> = ({ sceneId, dialogue, onTypingComple
         <span className={`block font-bold font-sans text-center transition-colors duration-300 text-outline ${UI.DIALOG_BOX_SPEAKER_MARGIN} ${fontSizeClass} ${speakerColorClass}`}>
           {hasSpeaker ? currentSpeaker : '\u00A0' /* Non-breaking space to preserve height */}
         </span>
-        <p className={`font-serif text-gray-200 leading-relaxed font-medium text-outline ${fontSizeClass}`}>
+        <p className={`font-serif text-gray-200 leading-snug font-medium text-outline ${fontSizeClass}`}>
           {displayedText}
           {!isParagraphComplete && !isLoading && <span className="inline-block w-2 h-5 ml-1 bg-gray-200 animate-pulse" />}
         </p>

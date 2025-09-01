@@ -1,43 +1,60 @@
 
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useGameState } from '../hooks/useGameState';
-import { StoryData } from '../hooks/useStoryManager';
+import { StoryManifest, StoryChapter } from '../types';
 import DialogBox from '../components/DialogBox';
 import ChoicesPanel from '../components/ChoicesPanel';
 import LoadingSpinner from '../components/LoadingSpinner';
 import { UI } from '../config';
 
 interface GameViewProps {
-    storyData: StoryData;
+    storyManifest: StoryManifest;
+    initialChapter: StoryChapter;
     fontSizeClassDialog: string;
     fontSizeClassChoices: string;
-    onUpdate: (update: { sceneId?: string; backgroundKey?: string; gameState?: Record<string, any> }) => void;
+    onUpdate: (update: { sceneId?: string; backgroundKey?: string; gameState?: Record<string, any>; chapter?: StoryChapter }) => void;
 }
 
-const GameView: React.FC<GameViewProps> = ({ storyData, fontSizeClassDialog, fontSizeClassChoices, onUpdate }) => {
+const GameView: React.FC<GameViewProps> = ({ storyManifest, initialChapter, fontSizeClassDialog, fontSizeClassChoices, onUpdate }) => {
     const {
         currentScene,
+        dialogueForDisplay,
         isLoading,
         isChoosing,
+        isReturning,
         exploredChoices,
         currentGameState,
+        currentChapter,
         handleChoiceSelect,
         handleTypingComplete,
         startGame,
-    } = useGameState('start');
+    } = useGameState(`${initialChapter.id}:start`);
     
-    useEffect(() => {
-        startGame();
-    }, [storyData.id, startGame]);
+    const [activeChapter, setActiveChapter] = useState(initialChapter);
 
     useEffect(() => {
+        // This effect runs when the story ID changes, restarting the game logic.
+        setActiveChapter(initialChapter);
+        startGame();
+    }, [storyManifest.id, initialChapter, startGame]);
+
+    useEffect(() => {
+        // This effect updates the active chapter when useGameState reports a change.
+        if (currentChapter && currentChapter.id !== activeChapter.id) {
+            setActiveChapter(currentChapter);
+        }
+    }, [currentChapter, activeChapter.id]);
+
+    useEffect(() => {
+        // This effect reports all updates up to the App component.
         onUpdate({
             sceneId: currentScene?.id,
             backgroundKey: currentScene?.backgroundKey,
             gameState: currentGameState,
+            chapter: activeChapter
         });
-    }, [currentScene, currentGameState, onUpdate]);
+    }, [currentScene, currentGameState, onUpdate, activeChapter]);
 
     const isInitialLoading = !currentScene && isLoading;
 
@@ -68,11 +85,12 @@ const GameView: React.FC<GameViewProps> = ({ storyData, fontSizeClassDialog, fon
                 </div>
                 <DialogBox 
                     sceneId={currentScene.id}
-                    dialogue={currentScene.dialogue}
+                    dialogue={dialogueForDisplay}
                     onTypingComplete={handleTypingComplete}
                     fontSizeClass={fontSizeClassDialog}
                     isLoading={isLoading}
-                    speakerColors={storyData.speakerColors}
+                    speakerColors={storyManifest.speakerColors}
+                    isReturning={isReturning}
                 />
             </div>
         </div>

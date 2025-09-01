@@ -45,7 +45,7 @@ const ChoicesPanel: React.FC<ChoicesPanelProps> = ({ choices, onChoiceSelect, sh
             key={choice.id}
             onClick={() => onChoiceSelect(choice)}
             disabled={isDisabled}
-            className={`group ${UI.CHOICES_BUTTON_WIDTH} font-serif font-medium text-outline px-6 py-3 text-gray-200 transition-all duration-300 ease-in-out ${UI.CHOICES_BUTTON_BG_COLOR} border-2 border-transparent rounded-md backdrop-blur-sm ${UI.CHOICES_BUTTON_HOVER_BG_COLOR} hover:border-gray-200/50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-gray-400 flex items-center space-x-4 justify-start ${fontSizeClass} ${isDisabled ? UI.CHOICES_BUTTON_DISABLED_STYLE : ''}`}
+            className={`group ${UI.CHOICES_BUTTON_WIDTH} font-serif font-medium text-outline px-6 py-2 text-gray-200 transition-all duration-300 ease-in-out ${UI.CHOICES_BUTTON_BG_COLOR} border-2 border-transparent rounded-md backdrop-blur-sm ${UI.CHOICES_BUTTON_HOVER_BG_COLOR} hover:border-gray-200/50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-gray-400 flex items-center space-x-4 justify-start ${fontSizeClass} ${isDisabled ? UI.CHOICES_BUTTON_DISABLED_STYLE : ''}`}
           >
             {choice.type === 'explore' ? <ExploreIcon /> : <ActionIcon />}
             <span className="flex-grow text-left">{choice.text}</span>

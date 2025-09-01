@@ -1,10 +1,9 @@
 
-
-
 import React, { useState, useCallback, useEffect } from 'react';
 import { UI, DEBUG } from './config';
 import { useUISettings } from './hooks/useUISettings';
 import { useStoryManager } from './hooks/useStoryManager';
+import { StoryChapter } from './types';
 
 import LoadingSpinner from './components/LoadingSpinner';
 import SettingsPanel from './components/SettingsPanel';
@@ -19,6 +18,7 @@ interface DebugInfo {
     backgroundKey?: string;
     backgroundType?: string;
     gameState?: Record<string, any>;
+    chapterId?: string;
 }
 
 interface BackgroundUpdateInfo {
@@ -66,8 +66,12 @@ const App: React.FC = () => {
         setShowStorySelection(false);
     }, [handleChangeStory, restartGame, setShowStorySelection]);
     
-    const handleGameUpdate = useCallback((update: Partial<DebugInfo>) => {
-        setDebugInfo(prev => ({ ...prev, ...update }));
+    const handleGameUpdate = useCallback((update: Partial<DebugInfo & { chapter?: StoryChapter }>) => {
+        setDebugInfo(prev => ({ 
+            ...prev, 
+            ...update,
+            chapterId: update.chapter?.id ?? prev.chapterId,
+        }));
     }, []);
     
     const handleBackgroundTypeUpdate = useCallback((info: BackgroundUpdateInfo) => {
@@ -81,14 +85,15 @@ const App: React.FC = () => {
             </main>
         );
     }
-
-    const startSceneBackgroundKey = storyData.gameData['start']?.backgroundKey ?? 'default';
+    
+    const startSceneBackgroundKey = storyData.chapter.gameData['start']?.backgroundKey ?? 'default';
     const backgroundKey = isGameStarted ? (debugInfo.backgroundKey ?? startSceneBackgroundKey) : 'title-screen';
-
+    
     return (
         <main className="relative w-screen h-screen overflow-hidden font-sans text-white">
             {DEBUG.SHOW_PANEL && <DebugPanel 
                 sceneId={debugInfo.sceneId}
+                chapterId={isGameStarted ? (debugInfo.chapterId ?? storyData.chapter.id) : 'N/A'}
                 backgroundKey={backgroundKey}
                 backgroundType={debugInfo.backgroundType}
                 gameState={debugInfo.gameState}
@@ -114,31 +119,33 @@ const App: React.FC = () => {
             {showStorySelection && (
                 <StorySelectionPanel 
                     stories={allStories}
-                    activeStoryId={storyData.id}
+                    activeStoryId={storyData.manifest.id}
                     onSelect={handleStorySelectAndRestart}
                     onClose={() => setShowStorySelection(false)}
                 />
             )}
             
             <Background 
-                key={`${storyData.id}-${backgroundKey}`}
+                key={`${storyData.manifest.id}-${backgroundKey}`}
                 backgroundKey={backgroundKey}
-                backgroundsMap={storyData.backgroundsMap}
-                activeStoryId={storyData.id}
+                backgroundsMap={storyData.manifest.backgroundsMap}
+                activeStoryId={storyData.manifest.id}
                 onUpdate={handleBackgroundTypeUpdate}
             />
 
             {!isGameStarted ? (
                 <TitleScreenView
-                    storyMetadata={storyData.metadata}
+                    storyMetadata={storyData.manifest.metadata}
+                    chapterMetadata={storyData.chapter.metadata}
                     onBeginGame={handleBeginGame}
                     fontSizeClass={UI.FONT_SIZES.dialog[fontSizeIndex]}
-                    speakerColors={storyData.speakerColors}
+                    speakerColors={storyData.manifest.speakerColors}
                 />
             ) : (
                 <GameView
-                    key={storyData.id} // Re-mounts GameView when story changes, resetting its state
-                    storyData={storyData}
+                    key={storyData.manifest.id} // Re-mounts GameView when story changes
+                    storyManifest={storyData.manifest}
+                    initialChapter={storyData.chapter}
                     fontSizeClassDialog={UI.FONT_SIZES.dialog[fontSizeIndex]}
                     fontSizeClassChoices={UI.FONT_SIZES.choices[fontSizeIndex]}
                     onUpdate={handleGameUpdate}
