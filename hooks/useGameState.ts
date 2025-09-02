@@ -20,13 +20,20 @@ export const useGameState = (initialSceneId: string = 'start') => {
     const currentSceneRef = useRef(currentScene);
     currentSceneRef.current = currentScene;
 
-    const loadScene = useCallback(async (sceneId: string, options?: { isReturning?: boolean }) => {
+    const loadScene = useCallback(async (sceneId: string, options?: { isReturning?: boolean; preserveBackground?: boolean }) => {
         setIsLoading(true);
         setIsReturning(!!options?.isReturning);
         setIsChoosing(false); // Always hide choices during any scene transition
 
         try {
             const scene = await getScene(sceneId);
+            
+            // If preserving the background, overwrite the new scene's backgroundKey
+            // with the one from the previous scene before updating the state.
+            if (options?.preserveBackground && currentSceneRef.current) {
+                scene.backgroundKey = currentSceneRef.current.backgroundKey;
+            }
+            
             setCurrentScene(scene);
             setCurrentChapter(getActiveChapterData());
 
@@ -66,7 +73,10 @@ export const useGameState = (initialSceneId: string = 'start') => {
             setExploredChoices(prev => new Set(prev).add(choice.id));
             loadScene(choice.nextSceneId);
         } else if (choice.type === 'return') {
-            loadScene(choice.nextSceneId, { isReturning: true });
+            loadScene(choice.nextSceneId, { 
+                isReturning: true, 
+                preserveBackground: choice.preserveBackground 
+            });
         } else { // 'action' type or undefined
             setExploredChoices(new Set());
             loadScene(choice.nextSceneId);

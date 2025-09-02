@@ -310,7 +310,7 @@
         { "speaker": "Princess", "line": "I don't know you are coming. I know *a hero* is coming. There is a difference." }
       ],
       "choices": [
-        { "id": "return-to-enter-waiting", "text": "I see.", "nextSceneId": "cabin-enter", "type": "return" }
+        { "id": "return-to-enter-waiting", "text": "I see.", "nextSceneId": "cabin-enter", "type": "return", "preserveBackground": true }
       ]
     },
     "show-locket-scene": {
@@ -354,7 +354,7 @@
         { "speaker": "Narrator", "line": "Don't listen to her riddles. End her." }
       ],
       "choices": [
-        { "id": "return-to-enter", "text": "A vessel?", "nextSceneId": "cabin-enter", "type": "return", "setState": { "askedPrincessWho": true } }
+        { "id": "return-to-enter", "text": "A vessel?", "nextSceneId": "cabin-enter", "type": "return", "preserveBackground": true, "setState": { "askedPrincessWho": true } }
       ]
     },
     "explore-vessel": {
@@ -366,7 +366,7 @@
         { "speaker": "Narrator", "line": "Psycho-babble. She's stalling. Kill her." }
       ],
       "choices": [
-        { "id": "return-to-enter-vessel", "text": "Action and consequence...", "nextSceneId": "cabin-enter", "type": "return" }
+        { "id": "return-to-enter-vessel", "text": "Action and consequence...", "nextSceneId": "cabin-enter", "type": "return", "preserveBackground": true }
       ]
     },
     "explore-room": {

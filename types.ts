@@ -6,6 +6,7 @@ export interface Choice {
   type?: 'action' | 'explore' | 'return';
   setState?: Record<string, any>;
   condition?: Record<string, any>;
+  preserveBackground?: boolean;
 }
 
 export interface DialogueLine {
