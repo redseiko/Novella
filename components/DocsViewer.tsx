@@ -12,19 +12,22 @@ interface DocsViewerProps {
 // --- Markdown Parser & Renderer ---
 
 /**
- * Renders inline markdown formatting like **bold** and *italic*.
+ * Renders inline markdown formatting like **bold**, *italic*, and `code`.
  * @param text The string to format.
  * @returns A React node with formatted text.
  */
 const renderInlineFormatting = (text: string): React.ReactNode => {
-    // Split by bold/italic markers, but keep the markers for parsing
-    const parts = text.split(/(\*\*.*?\*\*|\*.*?\*)/g).filter(Boolean);
+    // Split by bold, italic, or code markers, but keep them for parsing
+    const parts = text.split(/(\*\*.*?\*\*|\*.*?\*|\`.*?\`)/g).filter(Boolean);
     return parts.map((part, index) => {
         if (part.startsWith('**') && part.endsWith('**')) {
             return <strong key={index}>{part.slice(2, -2)}</strong>;
         }
         if (part.startsWith('*') && part.endsWith('*')) {
             return <em key={index}>{part.slice(1, -1)}</em>;
+        }
+        if (part.startsWith('`') && part.endsWith('`')) {
+            return <code key={index} className="bg-gray-900 text-rose-300 font-mono py-0.5 px-1.5 rounded-md text-sm">{part.slice(1, -1)}</code>;
         }
         return part;
     });
@@ -110,13 +113,13 @@ const MarkdownRenderer: React.FC<{ content: string }> = ({ content }) => {
         return blocks.map((block, i) => {
             const trimmedBlock = block.trim();
             if (trimmedBlock.startsWith('# ')) {
-                return <h1 key={i} className="text-3xl font-serif font-bold mt-6 mb-3 border-b border-gray-600 pb-2">{trimmedBlock.substring(2)}</h1>;
+                return <h1 key={i} className="text-3xl font-serif font-bold mt-6 mb-3 border-b border-gray-600 pb-2">{renderInlineFormatting(trimmedBlock.substring(2))}</h1>;
             }
             if (trimmedBlock.startsWith('## ')) {
-                return <h2 key={i} className="text-2xl font-serif font-bold mt-4 mb-2">{trimmedBlock.substring(3)}</h2>;
+                return <h2 key={i} className="text-2xl font-serif font-bold mt-4 mb-2">{renderInlineFormatting(trimmedBlock.substring(3))}</h2>;
             }
             if (trimmedBlock.startsWith('### ')) {
-                return <h3 key={i} className="text-xl font-serif font-semibold mt-4 mb-2">{trimmedBlock.substring(4)}</h3>;
+                return <h3 key={i} className="text-xl font-serif font-semibold mt-4 mb-2">{renderInlineFormatting(trimmedBlock.substring(4))}</h3>;
             }
             if (trimmedBlock.startsWith('```')) {
                 const code = trimmedBlock.replace(/```/g, '').replace(/^\s*\w+\s*\n/, '').trim();
@@ -182,6 +185,11 @@ const DocsViewer: React.FC<DocsViewerProps> = ({ onClose }) => {
         fetchDocContent();
     }, [activeDocId]);
     
+    const activeDocTitle = useMemo(() => {
+        if (!activeDocId || docs.length === 0) return 'Loading...';
+        return docs.find(doc => doc.id === activeDocId)?.title || 'Document';
+    }, [docs, activeDocId]);
+
     return (
         <div 
             className="fixed inset-0 z-[100] bg-black/70 backdrop-blur-sm flex items-center justify-center animate-fade-in p-4 sm:p-8"
@@ -226,19 +234,23 @@ const DocsViewer: React.FC<DocsViewerProps> = ({ onClose }) => {
                 </aside>
                 
                 {/* Content */}
-                <main className="flex-grow p-6 md:p-8 overflow-y-auto relative">
-                    <button 
-                        onClick={onClose} 
-                        className="text-gray-400 hover:text-white text-4xl leading-none absolute top-4 right-6 hidden sm:block"
-                        aria-label="Close"
-                      >
-                        &times;
-                      </button>
-                    {isLoading ? (
-                        <div className="text-gray-400">Loading document...</div>
-                    ) : (
-                        <MarkdownRenderer content={content} />
-                    )}
+                <main className="flex-grow flex flex-col overflow-hidden">
+                    <header className="flex-shrink-0 bg-gray-900/70 p-4 border-b border-gray-700 flex justify-between items-center">
+                         <h3 className="text-lg font-bold text-white font-sans truncate pr-4">{activeDocTitle}</h3>
+                         <button 
+                            onClick={onClose} 
+                            className="px-4 py-2 text-sm font-sans text-gray-300 bg-gray-700 rounded-md hover:bg-gray-600 transition-colors flex-shrink-0"
+                          >
+                            Close
+                          </button>
+                    </header>
+                    <div className="flex-grow p-6 md:p-8 overflow-y-auto">
+                        {isLoading ? (
+                            <div className="text-gray-400">Loading document...</div>
+                        ) : (
+                            <MarkdownRenderer content={content} />
+                        )}
+                    </div>
                 </main>
             </div>
         </div>

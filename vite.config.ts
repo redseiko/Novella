@@ -1,4 +1,5 @@
-import { defineConfig, Plugin } from 'vite'
+// Fix: Removed 'Plugin' from import as it is no longer explicitly used.
+import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 /**
@@ -6,7 +7,9 @@ import react from '@vitejs/plugin-react'
  * This allows the index.html to work for both CDN-based prototyping (e.g., in AI Studio)
  * and a standard Vite build process that compiles CSS with PostCSS, preventing conflicts.
  */
-const removeTailwindCdnPlugin = (): Plugin => {
+// Fix: Removed explicit ': Plugin' return type. Type inference will be used instead.
+// This resolves a type conflict where 'name' was not considered a valid property of 'Plugin'.
+const removeTailwindCdnPlugin = () => {
   return {
     name: 'vite-plugin-remove-tailwind-cdn',
     // This hook is invoked by Vite when transforming index.html.
@@ -18,7 +21,7 @@ const removeTailwindCdnPlugin = (): Plugin => {
         // Remove the main Tailwind CDN script tag
         .replace(/<script src="https:\/\/cdn\.tailwindcss\.com"><\/script>/, '')
         // Remove the inline Tailwind config script block
-        .replace(/<script>\s*tailwind\.config\s*=\s*{[\s\S]*?}\s*<\/script>/, '');
+        .replace(/<script type="module">[\s\S]*?tailwind\.config[\s\S]*?<\/script>/, '');
     }
   };
 };
