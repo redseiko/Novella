@@ -284,7 +284,7 @@
       "backgroundKey": "cabin-interior-first-encounter",
       "dialogue": [
         { "speaker": "Narrator", "line": "The room is sparse, but meticulously clean." },
-        { "speaker": "Narrator", "line": "A figure stands by the single window, her back to you, gazing out at a forest that isn't there." },
+        { "speaker": "Narrator", "line": "A figure stands in the middle of the room, her back to you." },
         { "speaker": "Narrator", "line": "The humming has stopped." },
         { "speaker": "Narrator", "line": "She speaks without turning, her voice calm and measured." },
         { "speaker": "Princess", "line": "You've arrived. I've been waiting." },
